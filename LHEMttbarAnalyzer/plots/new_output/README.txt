@@ -1,0 +1,1 @@
+This folder has the dataset where tops are from LHE collection, no LastCopy. 

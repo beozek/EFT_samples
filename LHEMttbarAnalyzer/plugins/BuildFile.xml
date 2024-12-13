@@ -1,0 +1,10 @@
+<library file="LHEMttbarAnalyzer.cc">
+  <use name="FWCore/Framework"/>
+  <use name="FWCore/Utilities"/>
+  <use name="FWCore/ParameterSet"/>
+  <use name="SimDataFormats/GeneratorProducts"/>
+  <use name="CommonTools/UtilAlgos"/>
+  <use name="FWCore/ServiceRegistry"/>
+  <use name="ROOT"/>
+  <flags EDM_PLUGIN="1"/>
+</library>

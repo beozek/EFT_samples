@@ -1,0 +1,2 @@
+This folder has the dataset where mttbar is plotted from the tops in LHE collection. 
+Top pt plots are plotted by using the tops in genparticles collection which are the mother of band W where W is mother of qq or lv

@@ -1,0 +1,21 @@
+source /cvmfs/cms.cern.ch/cmsset_default.sh
+cmssw-el7
+source /cvmfs/cms.cern.ch/cmsset_default.sh
+export PS1="\w\$ " 
+export SCRAM_ARCH=slc7_amd64_gcc700
+cd ~/private/CMSSW_10_6_28/src
+cmsenv
+voms-proxy-init -voms cms -valid 192:00
+scram b -j8
+
+run locally:
+	cd MyAnalyzer/LHEMttbarAnalyzer/
+	cmsRun cfg.py 
+
+run on crab:
+	edit crab submit file 
+	crab submit -c <crab cfg>
+	
+
+status:
+crab status -d crab_projects_Weighted/crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_Weighted
