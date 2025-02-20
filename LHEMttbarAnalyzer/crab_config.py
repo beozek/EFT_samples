@@ -1,8 +1,8 @@
 from CRABClient.UserUtilities import config
 config = config()
 
-config.General.requestName = 'LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_investigatingTopPt'  # Unique name for this CRAB job
-config.General.workArea = 'crab_projects_investigatingTopPt'  # Directory where CRAB will store job logs and reports
+config.General.requestName = 'LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_sumweights'  # Unique name for this CRAB job
+config.General.workArea = 'crab_projects_sumweights'  # Directory where CRAB will store job logs and reports
 config.General.transferOutputs = True
 config.General.transferLogs = False
 
@@ -14,13 +14,12 @@ config.Data.inputDataset = '/TTtoLNu2Q-1Jets-smeft_MTT-0to700_TuneCP5_13TeV_madg
 config.Data.inputDBS = 'global'
 config.Data.splitting = 'FileBased'  # Split jobs by number of files
 config.Data.unitsPerJob = 5  # Number of files per job
-# config.Data.totalUnits = -1  
+# config.Data.totalUnits = 50
 
 # Output directory
-config.Data.outLFNDirBase = '/store/user/beozek/LHEMttbarAnalyzer/MTT0to700_investigatingTopPt/'
-
+config.Data.outLFNDirBase = '/store/user/beozek/LHEMttbarAnalyzer/MTT0to700_sumweights/'
 config.Data.publication = False
-config.Data.outputDatasetTag = 'LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_investigatingTopPt'
+config.Data.outputDatasetTag = 'LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_sumweights'
 
 # Site section
 config.Site.storageSite = 'T2_DE_DESY'

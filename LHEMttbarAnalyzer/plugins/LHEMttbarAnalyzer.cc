@@ -48,7 +48,19 @@ private:
   bool isHadronicW(const reco::GenParticle* W, std::vector<TLorentzVector> &quarks);
 
   // Histograms
-  TH1D* h_mttbar_;                     // Invariant mass of ttbar
+  TH1D* h_mttbar_;
+  TH1D* h_mttbar_refpoint_;                     // Invariant mass of ttbar
+  TH1D* h_mttbar_refpoint_bin50_;               // Invariant mass of ttbar
+
+  TH1D* h_mttbar_sm_;                     // Invariant mass of ttbar
+  TH1D* h_mttbar_sm_bin50_;               // Invariant mass of ttbar
+
+  TH1D* h_mttbar_eft_;       
+  TH1D* h_mttbar_eft_bin50_;       
+
+  TH1D* h_topMass_refpoint_;
+  TH1D* h_antitopMass_refpoint_;
+
   TH1D* h_numJets_;                    // Number of jets per event
   TH1D* h_leadingLeptonPt_;            // pT of the leading lepton from W decay
   TH1D* h_averageTopPt_;               // Average pT of the top quarks
@@ -59,7 +71,9 @@ private:
   TH1D* h_topsPt_;                     // Sum of pT of the top quarks
   TH1D* h_topsPt_LHE_;                 // pT of the LHE top quarks
   TH1D* h_antitopsPt_LHE_;              // pT of the LHE antitop quarks
-  TH1D* h_sow_;                        // Sum of weights
+  TH1D* h_sumw_eft_;                        // Sum of weights
+  TH1D* h_sumw_sm_;
+  TH1D* h_sumw_ref_;
 
   edm::EDGetTokenT<LHEEventProduct> lheEventToken_;
   edm::EDGetTokenT<LHERunInfoProduct> lheRunInfoToken_;
@@ -82,12 +96,26 @@ LHEMttbarAnalyzer::LHEMttbarAnalyzer(const edm::ParameterSet& iConfig)
       semileptonicEvents_(0),
       debug_(iConfig.getParameter<bool>("debug")) 
       {
+
   edm::Service<TFileService> fs;
-  h_mttbar_ = fs->make<TH1D>("mttbar", "Invariant Mass of ttbar; m_{t#bar{t}} [GeV]; Events", 100, 0, 1500);
+  h_mttbar_ = fs->make<TH1D>("mttbar", "Invariant Mass of ttbar; m_{t#bar{t}} [GeV]; Events", 200, 0, 5000);
+
+  h_mttbar_refpoint_ = fs->make<TH1D>("mttbar_refpoint", "Invariant Mass of ttbar; m_{t#bar{t}} [GeV]; Events", 200, 0, 5000);
+  h_mttbar_refpoint_bin50_ = fs->make<TH1D>("mttbar_refpoint_bin50", "Invariant Mass of ttbar; m_{t#bar{t}} [GeV]; Events", 100, 0, 5000);
+  
+  h_mttbar_sm_ = fs->make<TH1D>("mttbar_sm", "Invariant Mass of ttbar; m_{t#bar{t}} [GeV]; Events", 200, 0, 10000);
+  h_mttbar_sm_bin50_ = fs->make<TH1D>("mttbar_sm_bin50", "Invariant Mass of ttbar; m_{t#bar{t}} [GeV]; Events", 100, 0, 10000);
+  
+  h_mttbar_eft_ = fs->make<TH1D>("mttbar_eft", "Invariant Mass of ttbar; m_{t#bar{t}} [GeV]; Events", 200, 0, 10000);
+  h_mttbar_eft_bin50_ = fs->make<TH1D>("mttbar_eft_bin50", "Invariant Mass of ttbar; m_{t#bar{t}} [GeV]; Events", 100, 0, 10000);
+  
+  h_topMass_refpoint_ = fs->make<TH1D>("topMass_refpoint", "Top Mass (refpoint); m_{top} [GeV]; Events", 60, 0, 1500);
+  h_antitopMass_refpoint_ = fs->make<TH1D>("antitopMass_refpoint", "Antitop Mass (refpoint); m_{tbar} [GeV]; Events", 60, 0, 1500);
+
   h_numJets_ = fs->make<TH1D>("numJets", "Number of Jets; N_{jets}; Events", 10, 0, 10);
   h_leadingLeptonPt_ = fs->make<TH1D>("leadingLeptonPt", "Lepton p_{T}; p_{T}^{lepton} [GeV]; Events", 50, 0, 500);
-  h_averageTopPt_ = fs->make<TH1D>("averageTopPt", "Average Top p_{T}; p_{T}^{top} [GeV]; Events", 50, 0, 1500);
-  h_averageTopPt_LHE_ = fs->make<TH1D>("averageTopPt_LHE", "Average LHE Top p_{T}; p_{T}^{top} [GeV]; Events", 50, 0, 1500);
+  h_averageTopPt_ = fs->make<TH1D>("averageTopPt", "Average Top p_{T}; p_{T}^{top} [GeV]; Events", 60, 0, 1500);
+  h_averageTopPt_LHE_ = fs->make<TH1D>("averageTopPt_LHE", "Average LHE Top p_{T}; p_{T}^{top} [GeV]; Events", 60, 0, 1500);
   h_leadingLeptonPtGeneric_ = fs->make<TH1D>("leadingLeptonPtGeneric", "Leading Lepton p_{T}; p_{T}^{lepton} [GeV]; Events", 100, 0, 500);
   h_nleps_ = fs->make<TH1D>("nleps", "Number of Leptons; N_{leps}; Events", 10, 0, 10);
   h_ntops_ = fs->make<TH1D>("ntops", "Number of Tops in Selected Events; N_{tops}; Events", 5, 0, 5);
@@ -95,16 +123,20 @@ LHEMttbarAnalyzer::LHEMttbarAnalyzer(const edm::ParameterSet& iConfig)
   h_topsPt_LHE_ = fs->make<TH1D>("topsPt_LHE", "LHE Top p_{T}; p_{T}^{tops} [GeV]; Events", 50, 0, 1000);
   h_antitopsPt_LHE_ = fs->make<TH1D>("antitopsPt_LHE", "LHE AntiTop p_{T}; p_{T}^{tops} [GeV]; Events", 50, 0, 1000);
 
-  h_sow_ = fs->make<TH1D>("sow", "Sum of Weights; ; Events", 1, 0, 2);
+  h_sumw_eft_ = fs->make<TH1D>("sumw_eft", "Sum of EFT weights", 1, 0, 1);
+  h_sumw_sm_  = fs->make<TH1D>("sumw_sm",  "Sum of SM Weights",  1, 0, 1);
+  h_sumw_ref_ = fs->make<TH1D>("sumw_ref", "Sum of REF Weights", 1, 0, 1);  
 }
 
 LHEMttbarAnalyzer::~LHEMttbarAnalyzer() {}
 
+// endJob
 void LHEMttbarAnalyzer::endJob() {
-  edm::LogInfo("LHEMttbarAnalyzer") << "Total Events Processed: " << totalEvents_;
-  edm::LogInfo("LHEMttbarAnalyzer") << "Semileptonic Events: " << semileptonicEvents_;
+  edm::LogInfo("LHEMttbarAnalyzer") << "Total events processed: " << totalEvents_;
+  edm::LogInfo("LHEMttbarAnalyzer") << "Semileptonic events: " << semileptonicEvents_;
 }
 
+// endRun
 void LHEMttbarAnalyzer::endRun(edm::Run const& iRun, edm::EventSetup const& iSetup) {
   edm::Handle<LHERunInfoProduct> lheRunInfo;
   iRun.getByToken(lheRunInfoToken_, lheRunInfo);
@@ -149,71 +181,114 @@ void LHEMttbarAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup&
   edm::Handle<LHEEventProduct> lheEvent;
   iEvent.getByToken(lheEventToken_, lheEvent);
   if (!lheEvent.isValid()) {
-    if (debug_) std::cout << "LHEEventProduct not found!" << std::endl;
+    if (debug_) std::cout << "LHEEventProduct not found!\n";
     return;
   }
 
-  double specificWeight = 1.0;
-  bool foundRef = false;
-  for (const auto &w : lheEvent->weights()) {
-    if (w.id == "reference_point") {
-      specificWeight = w.wgt;
+  //////////////////////////////////////////
+  // A) Collect the weights
+  //////////////////////////////////////////
+  double wgt_refpoint = 1.0;
+  double wgt_sm_point = 1.0;
+  double wgt_eft = 1.0;
+
+  // ID for the EFT weight
+  const std::string eftWeightID = "EFTrwgt0_ctGIm_m0p936_ctGRe_m0p77_cQj38_0p944_cQj18_2p709_cQu8_0p474_cQd8_m0p91_ctj8_1p553_ctu8_m0p911_ctd8_1p778_cQj31_1p266_cQj11_0p778_cQu1_0p409_cQd1_m0p332_ctj1_m2p023_ctu1_0p08_ctd1_m1p618";
+
+  bool foundRef   = false;
+  bool foundSM    = false;
+  bool foundEFT   = false;
+
+  const auto& lheWeights = lheEvent->weights();
+  for (auto &w : lheWeights) {
+    const std::string &wID = w.id;
+    double val = w.wgt;
+
+    if (wID == "reference_point") {
+      wgt_refpoint = val;
       foundRef = true;
-      break;
     }
-  }
-  if (!foundRef && debug_) std::cout << "reference_point weight not found!" << std::endl;
-
-  h_sow_->Fill(1.0, specificWeight);
-    //\\//\//\\// Print weights
-  // std::cout << "Event " << iEvent.id().event() << " Weights:" << std::endl;
-  // for (const auto& wgt : weights) {
-  //   std::string description = "N/A";
-  //   auto it = weightIDMap_.find(wgt.id);
-  //   if (it != weightIDMap_.end()) {
-  //     description = it->second;
-  //   }
-  //   std::cout << "Weight ID: " << wgt.id << ", Value: " << wgt.wgt << ", Description: " << description << std::endl;
-  // }
-  //\\//\//\\// Print weights
-
-  const auto& hepeup = lheEvent->hepeup();
-  const auto& pup = hepeup.PUP;
-  const auto& idup = hepeup.IDUP;
-
-  TLorentzVector topLHE, antitopLHE;
-  bool foundTopLHE = false, foundAntiTopLHE = false;
-  for (size_t i = 0; i < idup.size(); i++) {
-    int pdgId = idup[i];   
-    if (pdgId == 6) {
-      topLHE.SetPxPyPzE(pup[i][0], pup[i][1], pup[i][2], pup[i][3]);
-      foundTopLHE = true;
-    } else if (pdgId == -6) {
-      antitopLHE.SetPxPyPzE(pup[i][0], pup[i][1], pup[i][2], pup[i][3]);
-      foundAntiTopLHE = true;
+    else if (wID == "sm_point") {
+      wgt_sm_point = val;
+      foundSM = true;
+    }
+    else if (wID == eftWeightID) {
+      wgt_eft = val;
+      foundEFT = true;
     }
   }
 
-  if (!foundTopLHE || !foundAntiTopLHE) {
-    if (debug_) std::cout << "Top or anti-top not found in LHE!" << std::endl;
-    return;
-  }
-    
-  double mttbar = (topLHE + antitopLHE).M();
-  h_mttbar_->Fill(mttbar, specificWeight);
+  h_sumw_eft_->Fill(0.5, wgt_eft);
+  h_sumw_sm_->Fill(0.5, wgt_sm_point);
+  h_sumw_ref_->Fill(0.5, wgt_refpoint);
 
   if (debug_) {
-    std::cout << "LHE Tops found. mttbar: " << mttbar << " GeV" << std::endl;
+    if (!foundRef)   std::cout << "reference_point weight not found!\n";
+    if (!foundSM)    std::cout << "sm_point weight not found!\n";
+    if (!foundEFT)   std::cout << "EFT weight not found!\n";
   }
 
-  double sumTopPt_LHE = topLHE.Pt() + antitopLHE.Pt();  
-  double TopPt_LHE = topLHE.Pt(); 
-  double antiTopPt_LHE = antitopLHE.Pt(); 
-  double avgTopPt_LHE = sumTopPt_LHE / 2.0;
-  h_averageTopPt_LHE_->Fill(avgTopPt_LHE, specificWeight);
-  h_topsPt_LHE_->Fill(TopPt_LHE, specificWeight);
-  h_antitopsPt_LHE_->Fill(antiTopPt_LHE, specificWeight);
+  //////////////////////////////////////////
+  // B) Find LHE top and antitop by PDG ID
+  //////////////////////////////////////////
+  const auto& hepeup = lheEvent->hepeup();
+  const auto& pup   = hepeup.PUP;   // 4-vectors
+  const auto& idup  = hepeup.IDUP;  // PDG IDs
 
+  std::vector<TLorentzVector> topsFound, antiTopsFound;
+
+  // Loop over LHE particles
+  for (size_t i = 0; i < idup.size(); i++) {
+    int pdgId = idup[i];
+    if (pdgId == 6) {
+      TLorentzVector t;
+      t.SetPxPyPzE(pup[i][0], pup[i][1], pup[i][2], pup[i][3]);
+      topsFound.push_back(t);
+    } 
+    else if (pdgId == -6) {
+      TLorentzVector tbar;
+      tbar.SetPxPyPzE(pup[i][0], pup[i][1], pup[i][2], pup[i][3]);
+      antiTopsFound.push_back(tbar);
+    }
+  }
+
+  if (topsFound.empty() || antiTopsFound.empty()) {
+    if (debug_) std::cout << "Did not find both top and antitop in LHE.\n";
+    return;
+  }
+
+  // Pick the last top and antitop
+  TLorentzVector topPick   = topsFound.back();   
+  TLorentzVector aTopPick  = antiTopsFound.back();
+
+  // Compute mttbar from these picks
+  double mttbar = (topPick + aTopPick).M();
+
+  // std::cout << "Found top 4-vector: pt=" << topPick.Pt() << "  mass=" << topPick.M() << std::endl;  
+  // std::cout << "Found antitop: " << aTopPick.Pt() << std::endl;
+
+  h_mttbar_refpoint_->Fill(mttbar, wgt_refpoint);
+  h_mttbar_sm_->Fill(mttbar, wgt_sm_point);
+  h_mttbar_eft_->Fill(mttbar, wgt_eft);
+
+  h_mttbar_refpoint_bin50_->Fill(mttbar, wgt_refpoint);
+  h_mttbar_sm_bin50_->Fill(mttbar, wgt_sm_point);
+  h_mttbar_eft_bin50_->Fill(mttbar, wgt_eft);
+
+  double massTop = topPick.M();
+  double massAntiTop = aTopPick.M();
+
+  double sumTopPt_LHE = topPick.Pt() + aTopPick.Pt();  
+  double TopPt_LHE = topPick.Pt(); 
+  double antiTopPt_LHE = aTopPick.Pt(); 
+  double avgTopPt_LHE = 0.5 * sumTopPt_LHE;
+
+  h_topMass_refpoint_->Fill(massTop, wgt_sm_point);
+  h_antitopMass_refpoint_->Fill(massAntiTop, wgt_sm_point);
+
+  h_averageTopPt_LHE_->Fill(avgTopPt_LHE, wgt_sm_point);
+  h_topsPt_LHE_->Fill(TopPt_LHE, wgt_sm_point);
+  h_antitopsPt_LHE_->Fill(antiTopPt_LHE, wgt_sm_point);
   
   //////////////////////////////////////////////
   // SECTION 2: GenParticle Part - Semileptonic
@@ -234,12 +309,14 @@ void LHEMttbarAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup&
     }
   }
 
+
   if (finalTops.size() != 2) {
     if (debug_) std::cout << "Not a ttbar event or no final tops found. finalTops size: " << finalTops.size() << std::endl;
     return;
   }
-  h_ntops_->Fill(finalTops.size(), specificWeight);
-
+  h_ntops_->Fill(finalTops.size(), wgt_sm_point);
+  
+  
   if (debug_) {
     std::cout << "Found " << finalTops.size() << " final-state tops at gen level." << std::endl;
     std::cout << "Top pT: " << finalTops[0]->pt() << ", Antitop pT: " << finalTops[1]->pt() << std::endl;
@@ -333,8 +410,8 @@ void LHEMttbarAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup&
   // Fill top kinematics now from GEN
   double genTopPtSum = finalTop->pt() + finalAntitop->pt();
   double genTopPtAvg = genTopPtSum / 2.0;
-  h_averageTopPt_->Fill(genTopPtAvg, specificWeight);
-  h_topsPt_->Fill(genTopPtSum, specificWeight);
+  h_averageTopPt_->Fill(genTopPtAvg, wgt_sm_point);
+  h_topsPt_->Fill(genTopPtSum, wgt_sm_point);
 
   if (W2lept && W1had) {
     TLorentzVector lepton2, nu2;
@@ -347,7 +424,7 @@ void LHEMttbarAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup&
   
   // Apply lepton pT/eta cuts
   if (wl.Pt() > 20.0 && fabs(wl.Eta()) < 2.5) {
-    h_leadingLeptonPt_->Fill(wl.Pt(), specificWeight);
+    h_leadingLeptonPt_->Fill(wl.Pt(), wgt_sm_point);
   } else {
     // If lepton doesn't pass selection, we stop here
         if (debug_) std::cout << "Lepton fails pT/eta cuts." << std::endl;
@@ -366,7 +443,7 @@ void LHEMttbarAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup&
   }
 
   int nleps = (int)candidateLeps.size();
-  h_nleps_->Fill(nleps, specificWeight);
+  h_nleps_->Fill(nleps, wgt_sm_point);
   if (debug_) std::cout << "Number of candidate leptons: " << nleps << std::endl;
 
   if (!candidateLeps.empty()) {
@@ -374,7 +451,7 @@ void LHEMttbarAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup&
       return a.Pt() > b.Pt();
     });
     TLorentzVector genericLeadingLepton = candidateLeps[0];
-    h_leadingLeptonPtGeneric_->Fill(genericLeadingLepton.Pt(), specificWeight);
+    h_leadingLeptonPtGeneric_->Fill(genericLeadingLepton.Pt(), wgt_sm_point);
 
     if (debug_) std::cout << "Generic leading lepton pT: " << genericLeadingLepton.Pt() << std::endl;
   }
@@ -384,7 +461,7 @@ void LHEMttbarAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup&
   iEvent.getByToken(genJetsToken_, genJetsHandle);
   if (!genJetsHandle.isValid()) {
     if (debug_) std::cout << "GenJet collection not found!" << std::endl;
-    h_numJets_->Fill(0.0, specificWeight);
+    h_numJets_->Fill(0.0, wgt_sm_point);
     return;
   }
 
@@ -407,7 +484,7 @@ void LHEMttbarAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup&
   }
 
   int njets = (int)cleanJets.size();
-  h_numJets_->Fill(njets, specificWeight);
+  h_numJets_->Fill(njets, wgt_sm_point);
 
   if (debug_) {
     std::cout << "Clean jets after lepton cleaning: " << njets << std::endl;

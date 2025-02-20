@@ -1,0 +1,863 @@
+DEBUG 2025-02-04 22:21:56.218 UTC: 	 CRAB Client version: v3.241125
+DEBUG 2025-02-04 22:21:56.218 UTC: 	 Running on: Linux lxplus973.cern.ch 5.14.0-503.15.1.el9_5.x86_64 #1 SMP PREEMPT_DYNAMIC Thu Nov 14 15:45:31 EST 2024 x86_64 x86_64 x86_64 GNU/Linux
+DEBUG 2025-02-04 22:21:56.218 UTC: 	 Using SINGULARITY image: el7:x86_64
+DEBUG 2025-02-04 22:21:56.218 UTC: 	 Operating System: CentOS Linux 7 (Core)
+DEBUG 2025-02-04 22:21:56.218 UTC: 	 Executing command: 'submit'
+DEBUG 2025-02-04 22:21:56.219 UTC: 	 Found CRAB cache file /afs/cern.ch/user/b/beozek/.crab3
+INFO 2025-02-04 22:21:56.244 UTC: 	 Will use CRAB configuration file crab_config.py
+DEBUG 2025-02-04 22:21:56.244 UTC: 	 Loading CRAB configuration file.
+DEBUG 2025-02-04 22:21:56.247 UTC: 	 Will use CRAB plugin ANALYSIS (i.e. will run an analysis job type).
+DEBUG 2025-02-04 22:21:56.265 UTC: 	 Checking credentials
+DEBUG 2025-02-04 22:21:56.266 UTC: 	 Found proxy file /tmp/x509up_u139566
+DEBUG 2025-02-04 22:21:56.266 UTC: 	 Making sure it has proper VOMS extension
+DEBUG 2025-02-04 22:21:56.266 UTC: 	 Executing command :
+ voms-proxy-info --vo --file /tmp/x509up_u139566
+DEBUG 2025-02-04 22:21:56.312 UTC: 	 output : cms
+
+ error: 
+ retcode : 0
+DEBUG 2025-02-04 22:21:56.312 UTC: 	 Getting proxy life time left
+DEBUG 2025-02-04 22:21:56.312 UTC: 	 Executing command :
+ voms-proxy-info --actimeleft --timeleft --file /tmp/x509up_u139566
+DEBUG 2025-02-04 22:21:56.340 UTC: 	 output : 687042
+687041
+
+ error: 
+ retcode : 0
+DEBUG 2025-02-04 22:21:56.341 UTC: 	 Proxy valid for 190:50:41 hours
+DEBUG 2025-02-04 22:21:56.341 UTC: 	 Encoded data for curl request: subresource=delegatedn
+DEBUG 2025-02-04 22:21:56.420 UTC: 	 Registering user credentials on myproxy for /DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(01|02).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-dev-tw(01|02|03|04).cern.ch|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=cmscrab/CN=(817881|373708)/CN=Robot: cms crab|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=crabint1/CN=373708/CN=Robot: CMS CRAB Integration 1
+DEBUG 2025-02-04 22:21:56.421 UTC: 	 Executing command :
+ voms-proxy-info --identity --file /tmp/x509up_u139566
+DEBUG 2025-02-04 22:21:56.451 UTC: 	 output : /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=beozek/CN=851337/CN=Beren Ozek
+
+ error: 
+ retcode : 0
+DEBUG 2025-02-04 22:21:56.452 UTC: 	 Getting myproxy life time left for 12f89c1afcc72f4407d8a7aa483b1b995adc434f
+DEBUG 2025-02-04 22:21:56.452 UTC: 	 Executing command :
+ myproxy-info -s myproxy.cern.ch -l 12f89c1afcc72f4407d8a7aa483b1b995adc434f
+DEBUG 2025-02-04 22:21:56.808 UTC: 	 output : username: 12f89c1afcc72f4407d8a7aa483b1b995adc434f
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=beozek/CN=851337/CN=Beren Ozek
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(01|02).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-dev-tw(01|02|03|04).cern.ch|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=cmscrab/CN=(817881|373708)/CN=Robot: cms crab|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=crabint1/CN=373708/CN=Robot: CMS CRAB Integration 1
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(01|02).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-dev-tw(01|02|03|04).cern.ch|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=cmscrab/CN=(817881|373708)/CN=Robot: cms crab|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=crabint1/CN=373708/CN=Robot: CMS CRAB Integration 1
+  timeleft: 0:00:00
+
+ error: 
+ retcode : 0
+DEBUG 2025-02-04 22:21:56.808 UTC: 	 Myproxy is valid: 0
+DEBUG 2025-02-04 22:21:56.808 UTC: 	 Executing command :
+ openssl x509 -noout -dates -in ~/.globus/usercert.pem
+DEBUG 2025-02-04 22:21:56.834 UTC: 	 output : notBefore=Nov 26 20:33:21 2024 GMT
+notAfter=Dec 31 20:33:21 2025 GMT
+
+ error: 
+ retcode : 0
+DEBUG 2025-02-04 22:21:56.841 UTC: 	 Delegating a myproxy for 720:00 hours
+DEBUG 2025-02-04 22:21:56.841 UTC: 	 Executing command :
+ export GT_PROXY_MODE=rfc ; myproxy-init -d -n -s myproxy.cern.ch -C ~/.globus/usercert.pem -y ~/.globus/userkey.pem -x -R '/DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(01|02).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-dev-tw(01|02|03|04).cern.ch|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=cmscrab/CN=(817881|373708)/CN=Robot: cms crab|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=crabint1/CN=373708/CN=Robot: CMS CRAB Integration 1' -x -Z '/DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(01|02).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-dev-tw(01|02|03|04).cern.ch|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=cmscrab/CN=(817881|373708)/CN=Robot: cms crab|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=crabint1/CN=373708/CN=Robot: CMS CRAB Integration 1' -l 12f89c1afcc72f4407d8a7aa483b1b995adc434f -t 168 -c 720:00
+DEBUG 2025-02-04 22:21:57.734 UTC: 	 output : Your identity: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=beozek/CN=851337/CN=Beren Ozek
+Creating proxy ............................................................................................................................................................................................................................................................................... Done
+Proxy Verify OK
+Your proxy is valid until: Thu Mar  6 23:21:57 2025
+A proxy valid for 720 hours (30.0 days) for user 12f89c1afcc72f4407d8a7aa483b1b995adc434f now exists on myproxy.cern.ch.
+
+ error: 
+ retcode : 0
+DEBUG 2025-02-04 22:21:57.735 UTC: 	 Executing command :
+ myproxy-info -s myproxy.cern.ch -l 12f89c1afcc72f4407d8a7aa483b1b995adc434f
+DEBUG 2025-02-04 22:21:58.115 UTC: 	 output : username: 12f89c1afcc72f4407d8a7aa483b1b995adc434f
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=beozek/CN=851337/CN=Beren Ozek
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(01|02).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-dev-tw(01|02|03|04).cern.ch|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=cmscrab/CN=(817881|373708)/CN=Robot: cms crab|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=crabint1/CN=373708/CN=Robot: CMS CRAB Integration 1
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(01|02).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-dev-tw(01|02|03|04).cern.ch|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=cmscrab/CN=(817881|373708)/CN=Robot: cms crab|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=crabint1/CN=373708/CN=Robot: CMS CRAB Integration 1
+  timeleft: 719:59:59  (30.0 days)
+
+ error: 
+ retcode : 0
+DEBUG 2025-02-04 22:21:58.115 UTC: 	 My-proxy delegated.
+DEBUG 2025-02-04 22:21:58.115 UTC: 	 Result of myproxy credential check:
+  Credential exists on myproxy: username: 12f89c1afcc72f4407d8a7aa483b1b995adc434f  - validity: 29 days, 23:59:00
+DEBUG 2025-02-04 22:21:58.115 UTC: 	 Command use: submit
+DEBUG 2025-02-04 22:21:58.115 UTC: 	 Options use: ['-c', 'crab_config.py']
+DEBUG 2025-02-04 22:21:58.116 UTC: 	 Encoded data for curl request: subresource=version
+DEBUG 2025-02-04 22:21:58.160 UTC: 	 CRABClient version: v3.241125
+DEBUG 2025-02-04 22:21:58.161 UTC: 	 Instance is prod
+DEBUG 2025-02-04 22:21:58.161 UTC: 	 Server base url is cmsweb.cern.ch
+DEBUG 2025-02-04 22:21:58.161 UTC: 	 Command api workflow
+DEBUG 2025-02-04 22:21:58.161 UTC: 	 Started submission
+DEBUG 2025-02-04 22:21:58.161 UTC: 	 Working on /afs/cern.ch/user/b/beozek/private/CMSSW_10_6_28/src/MyAnalyzer/LHEMttbarAnalyzer/crab_projects_SM_rwgth_test/crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test
+DEBUG 2025-02-04 22:21:58.161 UTC: 	 Encoded data for curl request: subresource=backendurls
+DEBUG 2025-02-04 22:21:58.487 UTC: 	 Loading required information from the environment
+DEBUG 2025-02-04 22:21:58.487 UTC: 	 Found CMSSW_10_6_28 for slc7_amd64_gcc700 with base /afs/cern.ch/user/b/beozek/private/CMSSW_10_6_28
+DEBUG 2025-02-04 22:21:58.487 UTC: 	 Loading required information from the environment
+DEBUG 2025-02-04 22:21:58.487 UTC: 	 Found CMSSW_10_6_28 for slc7_amd64_gcc700 with base /afs/cern.ch/user/b/beozek/private/CMSSW_10_6_28
+DEBUG 2025-02-04 22:21:58.487 UTC: 	 UNIQUE NAME: tarUUID 828ef631-0fe8-4f48-ae86-9998fc10226f 
+DEBUG 2025-02-04 22:21:58.487 UTC: 	 self.config: from WMCore.Configuration import Configuration
+config = Configuration()
+config.section_('General')
+config.General.transferLogs = False
+config.General.transferOutputs = True
+config.General.workArea = 'crab_projects_SM_rwgth_test'
+config.General.requestName = 'LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test'
+config.section_('JobType')
+config.JobType.psetName = 'cfg.py'
+config.JobType.pluginName = 'Analysis'
+config.JobType.allowUndistributedCMSSW = True
+config.section_('Data')
+config.Data.inputDataset = '/TTtoLNu2Q-1Jets-smeft_MTT-0to700_TuneCP5_13TeV_madgraphMLM-pythia8/RunIISummer20UL17MiniAODv2-106X_mc2017_realistic_v9-v3/MINIAODSIM'
+config.Data.outputDatasetTag = 'LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test'
+config.Data.totalUnits = 20
+config.Data.unitsPerJob = 5
+config.Data.inputDBS = 'global'
+config.Data.splitting = 'FileBased'
+config.Data.outLFNDirBase = '/store/user/beozek/LHEMttbarAnalyzer/MTT0to700_SM_rwgth_test/'
+config.Data.publication = False
+config.section_('Site')
+config.Site.storageSite = 'T2_DE_DESY'
+config.section_('User')
+config.section_('Debug')
+
+DEBUG 2025-02-04 22:21:58.487 UTC: 	 self.config.JobType.psetName: cfg.py
+INFO 2025-02-04 22:21:58.487 UTC: 	 Importing CMSSW configuration cfg.py
+INFO 2025-02-04 22:21:58.649 UTC: 	 Finished importing CMSSW configuration cfg.py
+DEBUG 2025-02-04 22:21:58.649 UTC: 	 Writing CMSSW configuration to /afs/cern.ch/user/b/beozek/private/CMSSW_10_6_28/src/MyAnalyzer/LHEMttbarAnalyzer/crab_projects_SM_rwgth_test/crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test/inputs/PSet.py
+DEBUG 2025-02-04 22:21:58.668 UTC: 	 The following EDM output files will be collected: []
+DEBUG 2025-02-04 22:21:58.668 UTC: 	 The following TFile output files will be collected: ['lhe_SM_0_700.root']
+DEBUG 2025-02-04 22:21:58.668 UTC: 	 The following user output files (not listed as PoolOuputModule or TFileService in the CMSSW PSet) will be collected: 
+DEBUG 2025-02-04 22:21:58.668 UTC: 	 Loading required information from the environment
+DEBUG 2025-02-04 22:21:58.668 UTC: 	 Found CMSSW_10_6_28 for slc7_amd64_gcc700 with base /afs/cern.ch/user/b/beozek/private/CMSSW_10_6_28
+DEBUG 2025-02-04 22:21:58.668 UTC: 	 Making tarball in /afs/cern.ch/user/b/beozek/private/CMSSW_10_6_28/src/MyAnalyzer/LHEMttbarAnalyzer/crab_projects_SM_rwgth_test/crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test/inputs/828ef631-0fe8-4f48-ae86-9998fc10226fdefault.tgz
+DEBUG 2025-02-04 22:21:58.668 UTC: 	 Checking directory /afs/cern.ch/user/b/beozek/private/CMSSW_10_6_28/bin
+DEBUG 2025-02-04 22:21:58.668 UTC: 	 Adding directory /afs/cern.ch/user/b/beozek/private/CMSSW_10_6_28/bin to tarball
+DEBUG 2025-02-04 22:21:58.671 UTC: 	 Checking directory /afs/cern.ch/user/b/beozek/private/CMSSW_10_6_28/python
+DEBUG 2025-02-04 22:21:58.671 UTC: 	 Adding directory /afs/cern.ch/user/b/beozek/private/CMSSW_10_6_28/python to tarball
+DEBUG 2025-02-04 22:21:58.672 UTC: 	 Checking directory /afs/cern.ch/user/b/beozek/private/CMSSW_10_6_28/cfipython
+DEBUG 2025-02-04 22:21:58.672 UTC: 	 Adding directory /afs/cern.ch/user/b/beozek/private/CMSSW_10_6_28/cfipython to tarball
+DEBUG 2025-02-04 22:21:58.673 UTC: 	 Checking directory /afs/cern.ch/user/b/beozek/private/CMSSW_10_6_28/lib
+DEBUG 2025-02-04 22:21:58.673 UTC: 	 Adding directory /afs/cern.ch/user/b/beozek/private/CMSSW_10_6_28/lib to tarball
+DEBUG 2025-02-04 22:21:58.697 UTC: 	 Checking directory /afs/cern.ch/user/b/beozek/private/CMSSW_10_6_28/biglib
+DEBUG 2025-02-04 22:21:58.697 UTC: 	 Adding directory /afs/cern.ch/user/b/beozek/private/CMSSW_10_6_28/biglib to tarball
+DEBUG 2025-02-04 22:21:58.698 UTC: 	 Checking directory /afs/cern.ch/user/b/beozek/private/CMSSW_10_6_28/module
+DEBUG 2025-02-04 22:21:58.698 UTC: 	 Checking directory /afs/cern.ch/user/b/beozek/private/CMSSW_10_6_28/config/SCRAM/hooks
+DEBUG 2025-02-04 22:21:58.698 UTC: 	 Adding directory /afs/cern.ch/user/b/beozek/private/CMSSW_10_6_28/config/SCRAM/hooks to tarball
+DEBUG 2025-02-04 22:21:59.022 UTC: 	 Uploading archive /afs/cern.ch/user/b/beozek/private/CMSSW_10_6_28/src/MyAnalyzer/LHEMttbarAnalyzer/crab_projects_SM_rwgth_test/crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test/inputs/828ef631-0fe8-4f48-ae86-9998fc10226fdefault.tgz (111 KB) to the CRAB cache. Using URI https://cmsweb.cern.ch/S3/crabcache_prod
+DEBUG 2025-02-04 22:21:59.083 UTC: 	 Encoded data for curl request: tarballname=0e4e30474b291967201934c565e547f198ee6c31068fcda3461807cea975dbba.tar.gz&subresource=upload&objecttype=sandbox
+DEBUG 2025-02-04 22:21:59.189 UTC: 	 Will execute:
+curl -f -v -X POST  -H "User-Agent: CRAB" -F "key=beozek/sandboxes/0e4e30474b291967201934c565e547f198ee6c31068fcda3461807cea975dbba.tar.gz" -F "AWSAccessKeyId=715203df6482458ba839e73e6dab634b" -F "policy=eyJleHBpcmF0aW9uIjogIjIwMjUtMDItMDRUMjM6MjE6NTlaIiwgImNvbmRpdGlvbnMiOiBbeyJidWNrZXQiOiAiY3JhYmNhY2hlX3Byb2QifSwgeyJrZXkiOiAiYmVvemVrL3NhbmRib3hlcy8wZTRlMzA0NzRiMjkxOTY3MjAxOTM0YzU2NWU1NDdmMTk4ZWU2YzMxMDY4ZmNkYTM0NjE4MDdjZWE5NzVkYmJhLnRhci5neiJ9XX0=" -F "signature=qpa06ohBn2E2/2XbMIMimcLb8pM=" -F "file=@/afs/cern.ch/user/b/beozek/private/CMSSW_10_6_28/src/MyAnalyzer/LHEMttbarAnalyzer/crab_projects_SM_rwgth_test/crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test/inputs/828ef631-0fe8-4f48-ae86-9998fc10226fdefault.tgz" "https://s3.cern.ch/crabcache_prod"
+DEBUG 2025-02-04 22:22:00.237 UTC: 	 exitcode: 0
+stdout: 
+DEBUG 2025-02-04 22:22:00.237 UTC: 	 upload to S3 of sandbox /afs/cern.ch/user/b/beozek/private/CMSSW_10_6_28/src/MyAnalyzer/LHEMttbarAnalyzer/crab_projects_SM_rwgth_test/crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test/inputs/828ef631-0fe8-4f48-ae86-9998fc10226fdefault.tgz completed
+DEBUG 2025-02-04 22:22:00.237 UTC: 	 make sure that object is ready for retrieve
+DEBUG 2025-02-04 22:22:01.239 UTC: 	 Encoded data for curl request: tarballname=0e4e30474b291967201934c565e547f198ee6c31068fcda3461807cea975dbba.tar.gz&subresource=download&clientmethod=head_object&objecttype=sandbox
+DEBUG 2025-02-04 22:22:01.283 UTC: 	 PreSignedUrl to download sandbox received OK
+DEBUG 2025-02-04 22:22:01.286 UTC: 	 Will execute:
+ curl -v -s -f -o /dev/null --head  "https://s3.cern.ch/crabcache_prod/beozek/sandboxes/0e4e30474b291967201934c565e547f198ee6c31068fcda3461807cea975dbba.tar.gz?AWSAccessKeyId=715203df6482458ba839e73e6dab634b&Signature=yy%2FcTzSph0x1h5d%2F%2B1SeU393Nzs%3D&Expires=1738711321"
+DEBUG 2025-02-04 22:22:01.317 UTC: 	 exitcode: 0
+stdout: 
+DEBUG 2025-02-04 22:22:01.317 UTC: 	 sandbox /afs/cern.ch/user/b/beozek/private/CMSSW_10_6_28/src/MyAnalyzer/LHEMttbarAnalyzer/crab_projects_SM_rwgth_test/crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test/inputs/828ef631-0fe8-4f48-ae86-9998fc10226fdefault.tgz successfully uploaded to S3
+DEBUG 2025-02-04 22:22:01.317 UTC: 	 Loading required information from the environment
+DEBUG 2025-02-04 22:22:01.317 UTC: 	 Found CMSSW_10_6_28 for slc7_amd64_gcc700 with base /afs/cern.ch/user/b/beozek/private/CMSSW_10_6_28
+DEBUG 2025-02-04 22:22:01.317 UTC: 	 Making tarball in /afs/cern.ch/user/b/beozek/private/CMSSW_10_6_28/src/MyAnalyzer/LHEMttbarAnalyzer/crab_projects_SM_rwgth_test/crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test/inputs/debugFiles.tgz
+DEBUG 2025-02-04 22:22:01.320 UTC: 	 Uploading archive /afs/cern.ch/user/b/beozek/private/CMSSW_10_6_28/src/MyAnalyzer/LHEMttbarAnalyzer/crab_projects_SM_rwgth_test/crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test/inputs/debugFiles.tgz (1 KB) to the CRAB cache. Using URI https://cmsweb.cern.ch/S3/crabcache_prod
+DEBUG 2025-02-04 22:22:01.322 UTC: 	 Encoded data for curl request: tarballname=a19f6269a976e4d65548ef9ce1c498fb68aa985314dc31785114a540693bb0a7.tar.gz&subresource=upload&objecttype=sandbox
+DEBUG 2025-02-04 22:22:01.413 UTC: 	 Will execute:
+curl -f -v -X POST  -H "User-Agent: CRAB" -F "key=beozek/sandboxes/a19f6269a976e4d65548ef9ce1c498fb68aa985314dc31785114a540693bb0a7.tar.gz" -F "AWSAccessKeyId=715203df6482458ba839e73e6dab634b" -F "policy=eyJleHBpcmF0aW9uIjogIjIwMjUtMDItMDRUMjM6MjI6MDFaIiwgImNvbmRpdGlvbnMiOiBbeyJidWNrZXQiOiAiY3JhYmNhY2hlX3Byb2QifSwgeyJrZXkiOiAiYmVvemVrL3NhbmRib3hlcy9hMTlmNjI2OWE5NzZlNGQ2NTU0OGVmOWNlMWM0OThmYjY4YWE5ODUzMTRkYzMxNzg1MTE0YTU0MDY5M2JiMGE3LnRhci5neiJ9XX0=" -F "signature=IVkw0VaoUaCTHYAN96r6scD5M/s=" -F "file=@/afs/cern.ch/user/b/beozek/private/CMSSW_10_6_28/src/MyAnalyzer/LHEMttbarAnalyzer/crab_projects_SM_rwgth_test/crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test/inputs/debugFiles.tgz" "https://s3.cern.ch/crabcache_prod"
+DEBUG 2025-02-04 22:22:02.513 UTC: 	 exitcode: 0
+stdout: 
+DEBUG 2025-02-04 22:22:02.513 UTC: 	 upload to S3 of sandbox /afs/cern.ch/user/b/beozek/private/CMSSW_10_6_28/src/MyAnalyzer/LHEMttbarAnalyzer/crab_projects_SM_rwgth_test/crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test/inputs/debugFiles.tgz completed
+DEBUG 2025-02-04 22:22:02.513 UTC: 	 make sure that object is ready for retrieve
+DEBUG 2025-02-04 22:22:03.514 UTC: 	 Encoded data for curl request: tarballname=a19f6269a976e4d65548ef9ce1c498fb68aa985314dc31785114a540693bb0a7.tar.gz&subresource=download&clientmethod=head_object&objecttype=sandbox
+DEBUG 2025-02-04 22:22:03.555 UTC: 	 PreSignedUrl to download sandbox received OK
+DEBUG 2025-02-04 22:22:03.557 UTC: 	 Will execute:
+ curl -v -s -f -o /dev/null --head  "https://s3.cern.ch/crabcache_prod/beozek/sandboxes/a19f6269a976e4d65548ef9ce1c498fb68aa985314dc31785114a540693bb0a7.tar.gz?AWSAccessKeyId=715203df6482458ba839e73e6dab634b&Signature=5uPmw7yW9Xx%2Fpu6bxxVX9UBC7YY%3D&Expires=1738711323"
+DEBUG 2025-02-04 22:22:03.588 UTC: 	 exitcode: 0
+stdout: 
+DEBUG 2025-02-04 22:22:03.588 UTC: 	 sandbox /afs/cern.ch/user/b/beozek/private/CMSSW_10_6_28/src/MyAnalyzer/LHEMttbarAnalyzer/crab_projects_SM_rwgth_test/crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test/inputs/debugFiles.tgz successfully uploaded to S3
+DEBUG 2025-02-04 22:22:03.588 UTC: 	 Result uploading input files: 0e4e30474b291967201934c565e547f198ee6c31068fcda3461807cea975dbba.tar.gz 
+DEBUG 2025-02-04 22:22:03.588 UTC: 	 submit() - self.configuration from WMCore.Configuration import Configuration
+config = Configuration()
+config.section_('General')
+config.General.transferLogs = False
+config.General.transferOutputs = True
+config.General.workArea = 'crab_projects_SM_rwgth_test'
+config.General.requestName = 'LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test'
+config.section_('JobType')
+config.JobType.psetName = 'cfg.py'
+config.JobType.pluginName = 'Analysis'
+config.JobType.allowUndistributedCMSSW = True
+config.section_('Data')
+config.Data.inputDataset = '/TTtoLNu2Q-1Jets-smeft_MTT-0to700_TuneCP5_13TeV_madgraphMLM-pythia8/RunIISummer20UL17MiniAODv2-106X_mc2017_realistic_v9-v3/MINIAODSIM'
+config.Data.outputDatasetTag = 'LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test'
+config.Data.totalUnits = 20
+config.Data.unitsPerJob = 5
+config.Data.inputDBS = 'global'
+config.Data.splitting = 'FileBased'
+config.Data.outLFNDirBase = '/store/user/beozek/LHEMttbarAnalyzer/MTT0to700_SM_rwgth_test/'
+config.Data.publication = False
+config.section_('Site')
+config.Site.storageSite = 'T2_DE_DESY'
+config.section_('User')
+config.section_('Debug')
+
+DEBUG 2025-02-04 22:22:03.588 UTC: 	 submit() - self.configreq {'maxjobruntime': 1250, 'extrajdl': [], 'lfn': '/store/user/beozek/LHEMttbarAnalyzer/MTT0to700_SM_rwgth_test/', 'savelogsflag': 0, 'useparent': 0, 'inputblocks': [], 'asyncdest': 'T2_DE_DESY', 'algoargs': 5, 'numcores': 1, 'addoutputfiles': [], 'generator': 'pythia', 'maxmemory': 2000, 'partialdataset': 0, 'publishdbsurl': 'https://cmsweb.cern.ch/dbs/prod/phys03/DBSWriter', 'priority': 10, 'userfiles': [], 'inputdata': '/TTtoLNu2Q-1Jets-smeft_MTT-0to700_TuneCP5_13TeV_madgraphMLM-pythia8/RunIISummer20UL17MiniAODv2-106X_mc2017_realistic_v9-v3/MINIAODSIM', 'ignorelocality': 0, 'dryrun': 0, 'workflow': 'crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test', 'nonprodsw': 1, 'oneEventMode': 0, 'saveoutput': 1, 'publication': 0, 'totalunits': 20, 'splitalgo': 'FileBased', 'ignoreglobalblacklist': 0, 'nonvaliddata': 0, 'dbsurl': 'https://cmsweb.cern.ch/dbs/prod/global/DBSReader', 'jobtype': 'Analysis', 'requireaccelerator': 0, 'publishname2': 'LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test'}
+DEBUG 2025-02-04 22:22:03.588 UTC: 	 submit() - jobconfig {'cachefilename': '0e4e30474b291967201934c565e547f198ee6c31068fcda3461807cea975dbba.tar.gz', 'jobarch': 'slc7_amd64_gcc700', 'addoutputfiles': [], 'cacheurl': u'https://cmsweb.cern.ch/S3/crabcache_prod', 'jobsw': 'CMSSW_10_6_28', 'tfileoutfiles': ['lhe_SM_0_700.root'], 'debugfilename': 'a19f6269a976e4d65548ef9ce1c498fb68aa985314dc31785114a540693bb0a7.tar.gz', 'inputdata': '/TTtoLNu2Q-1Jets-smeft_MTT-0to700_TuneCP5_13TeV_madgraphMLM-pythia8/RunIISummer20UL17MiniAODv2-106X_mc2017_realistic_v9-v3/MINIAODSIM', 'jobtype': 'Analysis', 'edmoutfiles': []}
+INFO 2025-02-04 22:22:03.588 UTC: 	 Sending the request to the server at cmsweb.cern.ch
+DEBUG 2025-02-04 22:22:03.588 UTC: 	 Submitting {'maxjobruntime': 1250, 'extrajdl': [], 'lfn': '/store/user/beozek/LHEMttbarAnalyzer/MTT0to700_SM_rwgth_test/', 'savelogsflag': 0, 'useparent': 0, 'inputblocks': [], 'asyncdest': 'T2_DE_DESY', 'algoargs': 5, 'cachefilename': '0e4e30474b291967201934c565e547f198ee6c31068fcda3461807cea975dbba.tar.gz', 'numcores': 1, 'addoutputfiles': [], 'generator': 'pythia', 'maxmemory': 2000, 'partialdataset': 0, 'publishdbsurl': 'https://cmsweb.cern.ch/dbs/prod/phys03/DBSWriter', 'priority': 10, 'jobsw': 'CMSSW_10_6_28', 'edmoutfiles': [], 'userfiles': [], 'inputdata': '/TTtoLNu2Q-1Jets-smeft_MTT-0to700_TuneCP5_13TeV_madgraphMLM-pythia8/RunIISummer20UL17MiniAODv2-106X_mc2017_realistic_v9-v3/MINIAODSIM', 'ignorelocality': 0, 'dryrun': 0, 'workflow': 'crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test', 'cacheurl': u'https://cmsweb.cern.ch/S3/crabcache_prod', 'nonprodsw': 1, 'tfileoutfiles': ['lhe_SM_0_700.root'], 'oneEventMode': 0, 'debugfilename': 'a19f6269a976e4d65548ef9ce1c498fb68aa985314dc31785114a540693bb0a7.tar.gz', 'saveoutput': 1, 'publication': 0, 'jobarch': 'slc7_amd64_gcc700', 'totalunits': 20, 'splitalgo': 'FileBased', 'ignoreglobalblacklist': 0, 'nonvaliddata': 0, 'dbsurl': 'https://cmsweb.cern.ch/dbs/prod/global/DBSReader', 'jobtype': 'Analysis', 'requireaccelerator': 0, 'publishname2': 'LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test'} 
+DEBUG 2025-02-04 22:22:03.589 UTC: 	 Encoded data for curl request: maxjobruntime=1250&lfn=%2Fstore%2Fuser%2Fbeozek%2FLHEMttbarAnalyzer%2FMTT0to700_SM_rwgth_test%2F&savelogsflag=0&useparent=0&asyncdest=T2_DE_DESY&algoargs=5&cachefilename=0e4e30474b291967201934c565e547f198ee6c31068fcda3461807cea975dbba.tar.gz&numcores=1&generator=pythia&maxmemory=2000&partialdataset=0&publishdbsurl=https%3A%2F%2Fcmsweb.cern.ch%2Fdbs%2Fprod%2Fphys03%2FDBSWriter&priority=10&jobsw=CMSSW_10_6_28&inputdata=%2FTTtoLNu2Q-1Jets-smeft_MTT-0to700_TuneCP5_13TeV_madgraphMLM-pythia8%2FRunIISummer20UL17MiniAODv2-106X_mc2017_realistic_v9-v3%2FMINIAODSIM&ignorelocality=0&dryrun=0&workflow=crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test&cacheurl=https%3A%2F%2Fcmsweb.cern.ch%2FS3%2Fcrabcache_prod&nonprodsw=1&oneEventMode=0&debugfilename=a19f6269a976e4d65548ef9ce1c498fb68aa985314dc31785114a540693bb0a7.tar.gz&saveoutput=1&publication=0&jobarch=slc7_amd64_gcc700&totalunits=20&splitalgo=FileBased&ignoreglobalblacklist=0&nonvaliddata=0&dbsurl=https%3A%2F%2Fcmsweb.cern.ch%2Fdbs%2Fprod%2Fglobal%2FDBSReader&jobtype=Analysis&requireaccelerator=0&publishname2=LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test&tfileoutfiles=lhe_SM_0_700.root
+DEBUG 2025-02-04 22:22:03.936 UTC: 	 Result: {u'result': [{u'RequestName': u'250204_222203:beozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test'}]}
+INFO 2025-02-04 22:22:03.941 UTC: 	 Success: Your task has been delivered to the prod CRAB3 server.
+INFO 2025-02-04 22:22:03.941 UTC: 	 Task name: 250204_222203:beozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test
+INFO 2025-02-04 22:22:03.941 UTC: 	 Project dir: crab_projects_SM_rwgth_test/crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test
+INFO 2025-02-04 22:22:03.941 UTC: 	 Please use ' crab status -d crab_projects_SM_rwgth_test/crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test ' to check how the submission process proceeds.
+DEBUG 2025-02-04 22:22:03.941 UTC: 	 About to return
+INFO 2025-02-04 22:22:03.944 UTC: 	 Log file is /afs/cern.ch/user/b/beozek/private/CMSSW_10_6_28/src/MyAnalyzer/LHEMttbarAnalyzer/crab_projects_SM_rwgth_test/crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test/crab.log
+DEBUG 2025-02-04 22:22:31.383 UTC: 	 CRAB Client version: v3.241125
+DEBUG 2025-02-04 22:22:31.383 UTC: 	 Running on: Linux lxplus973.cern.ch 5.14.0-503.15.1.el9_5.x86_64 #1 SMP PREEMPT_DYNAMIC Thu Nov 14 15:45:31 EST 2024 x86_64 x86_64 x86_64 GNU/Linux
+DEBUG 2025-02-04 22:22:31.383 UTC: 	 Using SINGULARITY image: el7:x86_64
+DEBUG 2025-02-04 22:22:31.383 UTC: 	 Operating System: CentOS Linux 7 (Core)
+DEBUG 2025-02-04 22:22:31.383 UTC: 	 Executing command: 'status'
+DEBUG 2025-02-04 22:22:31.383 UTC: 	 Found CRAB cache file /afs/cern.ch/user/b/beozek/.crab3
+DEBUG 2025-02-04 22:22:31.387 UTC: 	 Checking credentials
+DEBUG 2025-02-04 22:22:31.387 UTC: 	 Found proxy file /tmp/x509up_u139566
+DEBUG 2025-02-04 22:22:31.387 UTC: 	 Making sure it has proper VOMS extension
+DEBUG 2025-02-04 22:22:31.387 UTC: 	 Executing command :
+ voms-proxy-info --vo --file /tmp/x509up_u139566
+DEBUG 2025-02-04 22:22:31.410 UTC: 	 output : cms
+
+ error: 
+ retcode : 0
+DEBUG 2025-02-04 22:22:31.411 UTC: 	 Getting proxy life time left
+DEBUG 2025-02-04 22:22:31.411 UTC: 	 Executing command :
+ voms-proxy-info --actimeleft --timeleft --file /tmp/x509up_u139566
+DEBUG 2025-02-04 22:22:31.440 UTC: 	 output : 687007
+687006
+
+ error: 
+ retcode : 0
+DEBUG 2025-02-04 22:22:31.440 UTC: 	 Proxy valid for 190:50:06 hours
+DEBUG 2025-02-04 22:22:31.441 UTC: 	 Encoded data for curl request: subresource=delegatedn
+DEBUG 2025-02-04 22:22:31.488 UTC: 	 Registering user credentials on myproxy for /DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(01|02).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-dev-tw(01|02|03|04).cern.ch|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=cmscrab/CN=(817881|373708)/CN=Robot: cms crab|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=crabint1/CN=373708/CN=Robot: CMS CRAB Integration 1
+DEBUG 2025-02-04 22:22:31.488 UTC: 	 Executing command :
+ voms-proxy-info --identity --file /tmp/x509up_u139566
+DEBUG 2025-02-04 22:22:31.518 UTC: 	 output : /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=beozek/CN=851337/CN=Beren Ozek
+
+ error: 
+ retcode : 0
+DEBUG 2025-02-04 22:22:31.518 UTC: 	 Getting myproxy life time left for 12f89c1afcc72f4407d8a7aa483b1b995adc434f
+DEBUG 2025-02-04 22:22:31.518 UTC: 	 Executing command :
+ myproxy-info -s myproxy.cern.ch -l 12f89c1afcc72f4407d8a7aa483b1b995adc434f
+DEBUG 2025-02-04 22:22:31.788 UTC: 	 output : username: 12f89c1afcc72f4407d8a7aa483b1b995adc434f
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=beozek/CN=851337/CN=Beren Ozek
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(01|02).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-dev-tw(01|02|03|04).cern.ch|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=cmscrab/CN=(817881|373708)/CN=Robot: cms crab|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=crabint1/CN=373708/CN=Robot: CMS CRAB Integration 1
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(01|02).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-dev-tw(01|02|03|04).cern.ch|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=cmscrab/CN=(817881|373708)/CN=Robot: cms crab|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=crabint1/CN=373708/CN=Robot: CMS CRAB Integration 1
+  timeleft: 719:59:26  (30.0 days)
+
+ error: 
+ retcode : 0
+DEBUG 2025-02-04 22:22:31.788 UTC: 	 Myproxy is valid: 2591940
+DEBUG 2025-02-04 22:22:31.788 UTC: 	 Result of myproxy credential check:
+  Credential exists on myproxy: username: 12f89c1afcc72f4407d8a7aa483b1b995adc434f  - validity: 29 days, 23:59:00
+DEBUG 2025-02-04 22:22:31.788 UTC: 	 Retrieving username ...
+DEBUG 2025-02-04 22:22:31.788 UTC: 	 Retrieving username from CRIC...
+DEBUG 2025-02-04 22:22:32.430 UTC: 	 username is beozek
+INFO 2025-02-04 22:22:32.905 UTC: 	 Rucio client intialized for account beozek
+DEBUG 2025-02-04 22:22:32.906 UTC: 	 Command use: status
+DEBUG 2025-02-04 22:22:32.906 UTC: 	 Options use: ['-d', 'crab_projects_SM_rwgth_test/crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test']
+DEBUG 2025-02-04 22:22:32.906 UTC: 	 Encoded data for curl request: subresource=version
+DEBUG 2025-02-04 22:22:32.948 UTC: 	 CRABClient version: v3.241125
+DEBUG 2025-02-04 22:22:32.948 UTC: 	 Instance is prod
+DEBUG 2025-02-04 22:22:32.948 UTC: 	 Server base url is cmsweb.cern.ch
+DEBUG 2025-02-04 22:22:32.948 UTC: 	 Command api workflow
+DEBUG 2025-02-04 22:22:32.948 UTC: 	 Encoded data for curl request: subresource=search&workflow=250204_222203%3Abeozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test
+DEBUG 2025-02-04 22:22:32.995 UTC: 	 Got information from server oracle database: {'desc': {'columns': ['tm_taskname', 'tm_activity', 'tm_task_status', 'tm_task_command', 'tm_start_time', 'tm_start_injection', 'tm_end_injection', 'tm_task_failure', 'tm_job_sw', 'tm_job_arch', 'tm_input_dataset', 'tm_nonvalid_input_dataset', 'tm_use_parent', 'tm_site_whitelist', 'tm_site_blacklist', 'tm_split_algo', 'tm_split_args', 'tm_user_sandbox', 'tm_cache_url', 'tm_username', 'tm_user_dn', 'tm_user_vo', 'tm_user_role', 'tm_user_group', 'tm_publish_name', 'tm_publish_groupname', 'tm_asyncdest', 'tm_dbs_url', 'tm_publish_dbs_url', 'tm_publication', 'tm_outfiles', 'tm_tfile_outfiles', 'tm_edm_outfiles', 'tm_job_type', 'tm_generator', 'tm_events_per_lumi', 'tm_arguments', 'tm_save_logs', 'tw_name', 'tm_user_infiles', 'tm_maxjobruntime', 'tm_numcores', 'tm_maxmemory', 'tm_priority', 'tm_output_dataset', 'tm_task_warnings', 'tm_user_webdir', 'tm_scriptexe', 'tm_scriptargs', 'tm_extrajdl', 'tm_collector', 'tm_schedd', 'tm_dry_run', 'tm_user_files', 'tm_transfer_outputs', 'tm_output_lfn', 'tm_ignore_locality', 'tm_fail_limit', 'tm_one_event_mode', 'tm_secondary_input_dataset', 'tm_primary_dataset', 'tm_last_publication', 'tm_debug_files', 'clusterid', 'tm_ignore_global_blacklist', 'tm_submitter_ip_addr', 'tm_totalunits', 'tm_ddm_reqid', 'tm_user_config', 'tm_transfer_container', 'tm_transfer_rule', 'tm_publish_rule', 'tm_multipub_rule', 'tm_job_min_microarch']}, 'result': ['250204_222203:beozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test', 'None', 'WAITING', 'SUBMIT', '2025-02-04 22:22:03.930031', 'None', 'None', 'None', 'CMSSW_10_6_28', 'slc7_amd64_gcc700', '/TTtoLNu2Q-1Jets-smeft_MTT-0to700_TuneCP5_13TeV_madgraphMLM-pythia8/RunIISummer20UL17MiniAODv2-106X_mc2017_realistic_v9-v3/MINIAODSIM', 'F', '0', '[]', '[]', 'FileBased', "{'halt_job_on_file_boundaries': False, 'splitOnRun': False, 'files_per_job': 5, 'runs': [], 'lumis': []}", '0e4e30474b291967201934c565e547f198ee6c31068fcda3461807cea975dbba.tar.gz', 'https://cmsweb.cern.ch/S3/crabcache_prod', 'beozek', '/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=beozek/CN=851337/CN=Beren Ozek', 'cms', 'None', 'None', 'LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test-00000000000000000000000000000000', 'F', 'T2_DE_DESY', 'https://cmsweb.cern.ch/dbs/prod/global/DBSReader', 'https://cmsweb.cern.ch/dbs/prod/phys03/DBSWriter', 'F', '[]', "['lhe_SM_0_700.root']", '[]', 'Analysis', 'pythia', 'None', '{}', 'F', 'NotKnownYet', '[]', '1250', '1', '2000', '10', 'None', '[]', 'None', 'None', '[]', '[]', 'cmsgwms-collector-global.cern.ch:9620,cmsgwms-collector-global.fnal.gov:9620', 'None', 'F', '[]', 'T', '/store/user/beozek/LHEMttbarAnalyzer/MTT0to700_SM_rwgth_test/', 'F', 'None', 'F', 'None', 'TTtoLNu2Q-1Jets-smeft_MTT-0to700_TuneCP5_13TeV_madgraphMLM-pythia8', 'None', 'a19f6269a976e4d65548ef9ce1c498fb68aa985314dc31785114a540693bb0a7.tar.gz', 'None', 'F', '188.185.101.116', '20.0', 'None', '{"partialdataset": false, "requireaccelerator": false, "acceleratorparams": null, "inputblocks": null}', 'None', 'None', 'None', 'None', 'None']}
+INFO 2025-02-04 22:22:32.996 UTC: 	 CRAB project directory:		/afs/cern.ch/user/b/beozek/private/CMSSW_10_6_28/src/MyAnalyzer/LHEMttbarAnalyzer/crab_projects_SM_rwgth_test/crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test
+INFO 2025-02-04 22:22:32.996 UTC: 	 Task name:			250204_222203:beozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test
+INFO 2025-02-04 22:22:32.996 UTC: 	 Grid scheduler - Task Worker:	N/A yet - NotKnownYet
+INFO 2025-02-04 22:22:32.996 UTC: 	 Status on the CRAB server:	WAITING on command SUBMIT
+INFO 2025-02-04 22:22:32.996 UTC: 	 Task URL to use for HELP:	https://cmsweb.cern.ch/crabserver/ui/task/250204_222203%3Abeozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test
+INFO 2025-02-04 22:22:33.004 UTC: 	 Dashboard monitoring URL:	https://monit-grafana.cern.ch/d/cmsTMDetail/cms-task-monitoring-task-view?orgId=11&var-user=beozek&var-task=250204_222203%3Abeozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test&from=1738704123000&to=now
+DEBUG 2025-02-04 22:22:33.004 UTC: 	 The task has not been submitted to the Grid scheduler yet. Not printing job information.
+INFO 2025-02-04 22:22:33.012 UTC: 	 Log file is /afs/cern.ch/user/b/beozek/private/CMSSW_10_6_28/src/MyAnalyzer/LHEMttbarAnalyzer/crab_projects_SM_rwgth_test/crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test/crab.log
+DEBUG 2025-02-04 22:25:25.877 UTC: 	 CRAB Client version: v3.241125
+DEBUG 2025-02-04 22:25:25.878 UTC: 	 Running on: Linux lxplus973.cern.ch 5.14.0-503.15.1.el9_5.x86_64 #1 SMP PREEMPT_DYNAMIC Thu Nov 14 15:45:31 EST 2024 x86_64 x86_64 x86_64 GNU/Linux
+DEBUG 2025-02-04 22:25:25.878 UTC: 	 Using SINGULARITY image: el7:x86_64
+DEBUG 2025-02-04 22:25:25.878 UTC: 	 Operating System: CentOS Linux 7 (Core)
+DEBUG 2025-02-04 22:25:25.878 UTC: 	 Executing command: 'status'
+DEBUG 2025-02-04 22:25:25.878 UTC: 	 Found CRAB cache file /afs/cern.ch/user/b/beozek/.crab3
+DEBUG 2025-02-04 22:25:25.882 UTC: 	 Checking credentials
+DEBUG 2025-02-04 22:25:25.882 UTC: 	 Found proxy file /tmp/x509up_u139566
+DEBUG 2025-02-04 22:25:25.882 UTC: 	 Making sure it has proper VOMS extension
+DEBUG 2025-02-04 22:25:25.882 UTC: 	 Executing command :
+ voms-proxy-info --vo --file /tmp/x509up_u139566
+DEBUG 2025-02-04 22:25:25.909 UTC: 	 output : cms
+
+ error: 
+ retcode : 0
+DEBUG 2025-02-04 22:25:25.909 UTC: 	 Getting proxy life time left
+DEBUG 2025-02-04 22:25:25.909 UTC: 	 Executing command :
+ voms-proxy-info --actimeleft --timeleft --file /tmp/x509up_u139566
+DEBUG 2025-02-04 22:25:25.935 UTC: 	 output : 686833
+686832
+
+ error: 
+ retcode : 0
+DEBUG 2025-02-04 22:25:25.935 UTC: 	 Proxy valid for 190:47:12 hours
+DEBUG 2025-02-04 22:25:25.936 UTC: 	 Encoded data for curl request: subresource=delegatedn
+DEBUG 2025-02-04 22:25:25.980 UTC: 	 Registering user credentials on myproxy for /DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(01|02).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-dev-tw(01|02|03|04).cern.ch|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=cmscrab/CN=(817881|373708)/CN=Robot: cms crab|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=crabint1/CN=373708/CN=Robot: CMS CRAB Integration 1
+DEBUG 2025-02-04 22:25:25.980 UTC: 	 Executing command :
+ voms-proxy-info --identity --file /tmp/x509up_u139566
+DEBUG 2025-02-04 22:25:26.005 UTC: 	 output : /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=beozek/CN=851337/CN=Beren Ozek
+
+ error: 
+ retcode : 0
+DEBUG 2025-02-04 22:25:26.005 UTC: 	 Getting myproxy life time left for 12f89c1afcc72f4407d8a7aa483b1b995adc434f
+DEBUG 2025-02-04 22:25:26.005 UTC: 	 Executing command :
+ myproxy-info -s myproxy.cern.ch -l 12f89c1afcc72f4407d8a7aa483b1b995adc434f
+DEBUG 2025-02-04 22:25:26.290 UTC: 	 output : username: 12f89c1afcc72f4407d8a7aa483b1b995adc434f
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=beozek/CN=851337/CN=Beren Ozek
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(01|02).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-dev-tw(01|02|03|04).cern.ch|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=cmscrab/CN=(817881|373708)/CN=Robot: cms crab|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=crabint1/CN=373708/CN=Robot: CMS CRAB Integration 1
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(01|02).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-dev-tw(01|02|03|04).cern.ch|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=cmscrab/CN=(817881|373708)/CN=Robot: cms crab|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=crabint1/CN=373708/CN=Robot: CMS CRAB Integration 1
+  timeleft: 719:56:31  (30.0 days)
+
+ error: 
+ retcode : 0
+DEBUG 2025-02-04 22:25:26.290 UTC: 	 Myproxy is valid: 2591760
+DEBUG 2025-02-04 22:25:26.290 UTC: 	 Result of myproxy credential check:
+  Credential exists on myproxy: username: 12f89c1afcc72f4407d8a7aa483b1b995adc434f  - validity: 29 days, 23:56:00
+DEBUG 2025-02-04 22:25:26.290 UTC: 	 Retrieving username ...
+DEBUG 2025-02-04 22:25:26.290 UTC: 	 Retrieving username from CRIC...
+DEBUG 2025-02-04 22:25:26.906 UTC: 	 username is beozek
+INFO 2025-02-04 22:25:27.203 UTC: 	 Rucio client intialized for account beozek
+DEBUG 2025-02-04 22:25:27.203 UTC: 	 Command use: status
+DEBUG 2025-02-04 22:25:27.203 UTC: 	 Options use: ['-d', 'crab_projects_SM_rwgth_test/crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test']
+DEBUG 2025-02-04 22:25:27.203 UTC: 	 Encoded data for curl request: subresource=version
+DEBUG 2025-02-04 22:25:27.248 UTC: 	 CRABClient version: v3.241125
+DEBUG 2025-02-04 22:25:27.248 UTC: 	 Instance is prod
+DEBUG 2025-02-04 22:25:27.248 UTC: 	 Server base url is cmsweb.cern.ch
+DEBUG 2025-02-04 22:25:27.248 UTC: 	 Command api workflow
+DEBUG 2025-02-04 22:25:27.249 UTC: 	 Encoded data for curl request: subresource=search&workflow=250204_222203%3Abeozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test
+DEBUG 2025-02-04 22:25:27.298 UTC: 	 Got information from server oracle database: {'desc': {'columns': ['tm_taskname', 'tm_activity', 'tm_task_status', 'tm_task_command', 'tm_start_time', 'tm_start_injection', 'tm_end_injection', 'tm_task_failure', 'tm_job_sw', 'tm_job_arch', 'tm_input_dataset', 'tm_nonvalid_input_dataset', 'tm_use_parent', 'tm_site_whitelist', 'tm_site_blacklist', 'tm_split_algo', 'tm_split_args', 'tm_user_sandbox', 'tm_cache_url', 'tm_username', 'tm_user_dn', 'tm_user_vo', 'tm_user_role', 'tm_user_group', 'tm_publish_name', 'tm_publish_groupname', 'tm_asyncdest', 'tm_dbs_url', 'tm_publish_dbs_url', 'tm_publication', 'tm_outfiles', 'tm_tfile_outfiles', 'tm_edm_outfiles', 'tm_job_type', 'tm_generator', 'tm_events_per_lumi', 'tm_arguments', 'tm_save_logs', 'tw_name', 'tm_user_infiles', 'tm_maxjobruntime', 'tm_numcores', 'tm_maxmemory', 'tm_priority', 'tm_output_dataset', 'tm_task_warnings', 'tm_user_webdir', 'tm_scriptexe', 'tm_scriptargs', 'tm_extrajdl', 'tm_collector', 'tm_schedd', 'tm_dry_run', 'tm_user_files', 'tm_transfer_outputs', 'tm_output_lfn', 'tm_ignore_locality', 'tm_fail_limit', 'tm_one_event_mode', 'tm_secondary_input_dataset', 'tm_primary_dataset', 'tm_last_publication', 'tm_debug_files', 'clusterid', 'tm_ignore_global_blacklist', 'tm_submitter_ip_addr', 'tm_totalunits', 'tm_ddm_reqid', 'tm_user_config', 'tm_transfer_container', 'tm_transfer_rule', 'tm_publish_rule', 'tm_multipub_rule', 'tm_job_min_microarch']}, 'result': ['250204_222203:beozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test', 'None', 'SUBMITTED', 'SUBMIT', '2025-02-04 22:22:03.930031', 'None', '2025-02-04 22:23:35.600490', 'None', 'CMSSW_10_6_28', 'slc7_amd64_gcc700', '/TTtoLNu2Q-1Jets-smeft_MTT-0to700_TuneCP5_13TeV_madgraphMLM-pythia8/RunIISummer20UL17MiniAODv2-106X_mc2017_realistic_v9-v3/MINIAODSIM', 'F', '0', '[]', '[]', 'FileBased', "{'halt_job_on_file_boundaries': False, 'splitOnRun': False, 'files_per_job': 5, 'runs': [], 'lumis': []}", '0e4e30474b291967201934c565e547f198ee6c31068fcda3461807cea975dbba.tar.gz', 'https://cmsweb.cern.ch/S3/crabcache_prod', 'beozek', '/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=beozek/CN=851337/CN=Beren Ozek', 'cms', 'None', 'None', 'LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test-00000000000000000000000000000000', 'F', 'T2_DE_DESY', 'https://cmsweb.cern.ch/dbs/prod/global/DBSReader', 'https://cmsweb.cern.ch/dbs/prod/phys03/DBSWriter', 'F', '[]', "['lhe_SM_0_700.root']", '[]', 'Analysis', 'pythia', 'None', '{}', 'F', 'crab-prod-tw01', '[]', '1250', '1', '2000', '10', 'None', '[]', 'http://vocms0195.cern.ch/mon/beozek/250204_222203:beozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test', 'None', '[]', '[]', 'cmsgwms-collector-global.cern.ch:9620,cmsgwms-collector-global.fnal.gov:9620', 'crab3@vocms0195.cern.ch', 'F', '[]', 'T', '/store/user/beozek/LHEMttbarAnalyzer/MTT0to700_SM_rwgth_test/', 'F', 'None', 'F', 'None', 'TTtoLNu2Q-1Jets-smeft_MTT-0to700_TuneCP5_13TeV_madgraphMLM-pythia8', 'None', 'a19f6269a976e4d65548ef9ce1c498fb68aa985314dc31785114a540693bb0a7.tar.gz', '114876859', 'F', '188.185.101.116', '20.0', 'None', '{"partialdataset": false, "requireaccelerator": false, "acceleratorparams": null, "inputblocks": null}', 'None', 'None', 'None', 'None', 'None']}
+INFO 2025-02-04 22:25:27.298 UTC: 	 CRAB project directory:		/afs/cern.ch/user/b/beozek/private/CMSSW_10_6_28/src/MyAnalyzer/LHEMttbarAnalyzer/crab_projects_SM_rwgth_test/crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test
+INFO 2025-02-04 22:25:27.298 UTC: 	 Task name:			250204_222203:beozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test
+INFO 2025-02-04 22:25:27.298 UTC: 	 Grid scheduler - Task Worker:	crab3@vocms0195.cern.ch - crab-prod-tw01
+INFO 2025-02-04 22:25:27.298 UTC: 	 Status on the CRAB server:	SUBMITTED
+INFO 2025-02-04 22:25:27.298 UTC: 	 Task URL to use for HELP:	https://cmsweb.cern.ch/crabserver/ui/task/250204_222203%3Abeozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test
+INFO 2025-02-04 22:25:27.304 UTC: 	 Dashboard monitoring URL:	https://monit-grafana.cern.ch/d/cmsTMDetail/cms-task-monitoring-task-view?orgId=11&var-user=beozek&var-task=250204_222203%3Abeozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test&from=1738704123000&to=now
+DEBUG 2025-02-04 22:25:27.304 UTC: 	 The CRAB server submitted your task to the Grid scheduler (cluster ID: 114876859)
+DEBUG 2025-02-04 22:25:27.304 UTC: 	 Webdir is located at http://vocms0195.cern.ch/mon/beozek/250204_222203:beozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test
+DEBUG 2025-02-04 22:25:27.304 UTC: 	 Encoded data for curl request: subresource=webdirprx&workflow=250204_222203%3Abeozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test
+DEBUG 2025-02-04 22:25:27.363 UTC: 	 Proxied webdir is located at https://cmsweb.cern.ch:8443/scheddmon/0195/beozek/250204_222203:beozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test
+DEBUG 2025-02-04 22:25:27.363 UTC: 	 Retrieving 'status_cache' file from https://cmsweb.cern.ch:8443/scheddmon/0195/beozek/250204_222203:beozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test/status_cache.pkl
+DEBUG 2025-02-04 22:25:27.363 UTC: 	 Will execute:
+curl -sS --capath /etc/grid-security/certificates --cert /tmp/x509up_u139566 --key /tmp/x509up_u139566 -o /tmp/crab_status-cache-u657dg_b.pkl -w %"{http_code}" "https://cmsweb.cern.ch:8443/scheddmon/0195/beozek/250204_222203:beozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test/status_cache.pkl"
+DEBUG 2025-02-04 22:25:27.363 UTC: 	 Executing command :
+ curl -sS --capath /etc/grid-security/certificates --cert /tmp/x509up_u139566 --key /tmp/x509up_u139566 -o /tmp/crab_status-cache-u657dg_b.pkl -w %"{http_code}" "https://cmsweb.cern.ch:8443/scheddmon/0195/beozek/250204_222203:beozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test/status_cache.pkl"
+DEBUG 2025-02-04 22:25:27.406 UTC: 	 output : 200
+ error: 
+ retcode : 0
+DEBUG 2025-02-04 22:25:27.406 UTC: 	 exitcode: 0
+stdout: 200
+stderr: 
+error details: 
+INFO 2025-02-04 22:25:27.407 UTC: 	 Task bootstrapped at 2025-02-04 22:24:38 UTC. 49 seconds ago
+INFO 2025-02-04 22:25:27.407 UTC: 	 Status information will be available within a few minutes
+INFO 2025-02-04 22:25:27.408 UTC: 	 Log file is /afs/cern.ch/user/b/beozek/private/CMSSW_10_6_28/src/MyAnalyzer/LHEMttbarAnalyzer/crab_projects_SM_rwgth_test/crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test/crab.log
+DEBUG 2025-02-04 22:31:02.347 UTC: 	 CRAB Client version: v3.241125
+DEBUG 2025-02-04 22:31:02.347 UTC: 	 Running on: Linux lxplus973.cern.ch 5.14.0-503.15.1.el9_5.x86_64 #1 SMP PREEMPT_DYNAMIC Thu Nov 14 15:45:31 EST 2024 x86_64 x86_64 x86_64 GNU/Linux
+DEBUG 2025-02-04 22:31:02.347 UTC: 	 Using SINGULARITY image: el7:x86_64
+DEBUG 2025-02-04 22:31:02.347 UTC: 	 Operating System: CentOS Linux 7 (Core)
+DEBUG 2025-02-04 22:31:02.347 UTC: 	 Executing command: 'status'
+DEBUG 2025-02-04 22:31:02.347 UTC: 	 Found CRAB cache file /afs/cern.ch/user/b/beozek/.crab3
+DEBUG 2025-02-04 22:31:02.353 UTC: 	 Checking credentials
+DEBUG 2025-02-04 22:31:02.353 UTC: 	 Found proxy file /tmp/x509up_u139566
+DEBUG 2025-02-04 22:31:02.353 UTC: 	 Making sure it has proper VOMS extension
+DEBUG 2025-02-04 22:31:02.353 UTC: 	 Executing command :
+ voms-proxy-info --vo --file /tmp/x509up_u139566
+DEBUG 2025-02-04 22:31:02.381 UTC: 	 output : cms
+
+ error: 
+ retcode : 0
+DEBUG 2025-02-04 22:31:02.381 UTC: 	 Getting proxy life time left
+DEBUG 2025-02-04 22:31:02.381 UTC: 	 Executing command :
+ voms-proxy-info --actimeleft --timeleft --file /tmp/x509up_u139566
+DEBUG 2025-02-04 22:31:02.405 UTC: 	 output : 686496
+686495
+
+ error: 
+ retcode : 0
+DEBUG 2025-02-04 22:31:02.405 UTC: 	 Proxy valid for 190:41:35 hours
+DEBUG 2025-02-04 22:31:02.405 UTC: 	 Encoded data for curl request: subresource=delegatedn
+DEBUG 2025-02-04 22:31:02.450 UTC: 	 Registering user credentials on myproxy for /DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(01|02).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-dev-tw(01|02|03|04).cern.ch|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=cmscrab/CN=(817881|373708)/CN=Robot: cms crab|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=crabint1/CN=373708/CN=Robot: CMS CRAB Integration 1
+DEBUG 2025-02-04 22:31:02.450 UTC: 	 Executing command :
+ voms-proxy-info --identity --file /tmp/x509up_u139566
+DEBUG 2025-02-04 22:31:02.478 UTC: 	 output : /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=beozek/CN=851337/CN=Beren Ozek
+
+ error: 
+ retcode : 0
+DEBUG 2025-02-04 22:31:02.478 UTC: 	 Getting myproxy life time left for 12f89c1afcc72f4407d8a7aa483b1b995adc434f
+DEBUG 2025-02-04 22:31:02.478 UTC: 	 Executing command :
+ myproxy-info -s myproxy.cern.ch -l 12f89c1afcc72f4407d8a7aa483b1b995adc434f
+DEBUG 2025-02-04 22:31:02.838 UTC: 	 output : username: 12f89c1afcc72f4407d8a7aa483b1b995adc434f
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=beozek/CN=851337/CN=Beren Ozek
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(01|02).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-dev-tw(01|02|03|04).cern.ch|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=cmscrab/CN=(817881|373708)/CN=Robot: cms crab|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=crabint1/CN=373708/CN=Robot: CMS CRAB Integration 1
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(01|02).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-dev-tw(01|02|03|04).cern.ch|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=cmscrab/CN=(817881|373708)/CN=Robot: cms crab|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=crabint1/CN=373708/CN=Robot: CMS CRAB Integration 1
+  timeleft: 719:50:55  (30.0 days)
+
+ error: 
+ retcode : 0
+DEBUG 2025-02-04 22:31:02.838 UTC: 	 Myproxy is valid: 2591400
+DEBUG 2025-02-04 22:31:02.838 UTC: 	 Result of myproxy credential check:
+  Credential exists on myproxy: username: 12f89c1afcc72f4407d8a7aa483b1b995adc434f  - validity: 29 days, 23:50:00
+DEBUG 2025-02-04 22:31:02.838 UTC: 	 Retrieving username ...
+DEBUG 2025-02-04 22:31:02.838 UTC: 	 Retrieving username from CRIC...
+DEBUG 2025-02-04 22:31:03.562 UTC: 	 username is beozek
+INFO 2025-02-04 22:31:03.923 UTC: 	 Rucio client intialized for account beozek
+DEBUG 2025-02-04 22:31:03.923 UTC: 	 Command use: status
+DEBUG 2025-02-04 22:31:03.923 UTC: 	 Options use: ['-d', 'crab_projects_SM_rwgth_test/crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test']
+DEBUG 2025-02-04 22:31:03.923 UTC: 	 Encoded data for curl request: subresource=version
+DEBUG 2025-02-04 22:31:03.971 UTC: 	 CRABClient version: v3.241125
+DEBUG 2025-02-04 22:31:03.971 UTC: 	 Instance is prod
+DEBUG 2025-02-04 22:31:03.971 UTC: 	 Server base url is cmsweb.cern.ch
+DEBUG 2025-02-04 22:31:03.971 UTC: 	 Command api workflow
+DEBUG 2025-02-04 22:31:03.971 UTC: 	 Encoded data for curl request: subresource=search&workflow=250204_222203%3Abeozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test
+DEBUG 2025-02-04 22:31:04.022 UTC: 	 Got information from server oracle database: {'desc': {'columns': ['tm_taskname', 'tm_activity', 'tm_task_status', 'tm_task_command', 'tm_start_time', 'tm_start_injection', 'tm_end_injection', 'tm_task_failure', 'tm_job_sw', 'tm_job_arch', 'tm_input_dataset', 'tm_nonvalid_input_dataset', 'tm_use_parent', 'tm_site_whitelist', 'tm_site_blacklist', 'tm_split_algo', 'tm_split_args', 'tm_user_sandbox', 'tm_cache_url', 'tm_username', 'tm_user_dn', 'tm_user_vo', 'tm_user_role', 'tm_user_group', 'tm_publish_name', 'tm_publish_groupname', 'tm_asyncdest', 'tm_dbs_url', 'tm_publish_dbs_url', 'tm_publication', 'tm_outfiles', 'tm_tfile_outfiles', 'tm_edm_outfiles', 'tm_job_type', 'tm_generator', 'tm_events_per_lumi', 'tm_arguments', 'tm_save_logs', 'tw_name', 'tm_user_infiles', 'tm_maxjobruntime', 'tm_numcores', 'tm_maxmemory', 'tm_priority', 'tm_output_dataset', 'tm_task_warnings', 'tm_user_webdir', 'tm_scriptexe', 'tm_scriptargs', 'tm_extrajdl', 'tm_collector', 'tm_schedd', 'tm_dry_run', 'tm_user_files', 'tm_transfer_outputs', 'tm_output_lfn', 'tm_ignore_locality', 'tm_fail_limit', 'tm_one_event_mode', 'tm_secondary_input_dataset', 'tm_primary_dataset', 'tm_last_publication', 'tm_debug_files', 'clusterid', 'tm_ignore_global_blacklist', 'tm_submitter_ip_addr', 'tm_totalunits', 'tm_ddm_reqid', 'tm_user_config', 'tm_transfer_container', 'tm_transfer_rule', 'tm_publish_rule', 'tm_multipub_rule', 'tm_job_min_microarch']}, 'result': ['250204_222203:beozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test', 'None', 'SUBMITTED', 'SUBMIT', '2025-02-04 22:22:03.930031', 'None', '2025-02-04 22:23:35.600490', 'None', 'CMSSW_10_6_28', 'slc7_amd64_gcc700', '/TTtoLNu2Q-1Jets-smeft_MTT-0to700_TuneCP5_13TeV_madgraphMLM-pythia8/RunIISummer20UL17MiniAODv2-106X_mc2017_realistic_v9-v3/MINIAODSIM', 'F', '0', '[]', '[]', 'FileBased', "{'halt_job_on_file_boundaries': False, 'splitOnRun': False, 'files_per_job': 5, 'runs': [], 'lumis': []}", '0e4e30474b291967201934c565e547f198ee6c31068fcda3461807cea975dbba.tar.gz', 'https://cmsweb.cern.ch/S3/crabcache_prod', 'beozek', '/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=beozek/CN=851337/CN=Beren Ozek', 'cms', 'None', 'None', 'LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test-00000000000000000000000000000000', 'F', 'T2_DE_DESY', 'https://cmsweb.cern.ch/dbs/prod/global/DBSReader', 'https://cmsweb.cern.ch/dbs/prod/phys03/DBSWriter', 'F', '[]', "['lhe_SM_0_700.root']", '[]', 'Analysis', 'pythia', 'None', '{}', 'F', 'crab-prod-tw01', '[]', '1250', '1', '2000', '10', "['/FakeDataset/fakefile-FakePublish-6adde14290d6022e38c048f718104213/USER']", '[]', 'http://vocms0195.cern.ch/mon/beozek/250204_222203:beozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test', 'None', '[]', '[]', 'cmsgwms-collector-global.cern.ch:9620,cmsgwms-collector-global.fnal.gov:9620', 'crab3@vocms0195.cern.ch', 'F', '[]', 'T', '/store/user/beozek/LHEMttbarAnalyzer/MTT0to700_SM_rwgth_test/', 'F', 'None', 'F', 'None', 'TTtoLNu2Q-1Jets-smeft_MTT-0to700_TuneCP5_13TeV_madgraphMLM-pythia8', 'None', 'a19f6269a976e4d65548ef9ce1c498fb68aa985314dc31785114a540693bb0a7.tar.gz', '114876859', 'F', '188.185.101.116', '20.0', 'None', '{"partialdataset": false, "requireaccelerator": false, "acceleratorparams": null, "inputblocks": null}', 'None', 'None', 'None', 'None', 'None']}
+INFO 2025-02-04 22:31:04.023 UTC: 	 CRAB project directory:		/afs/cern.ch/user/b/beozek/private/CMSSW_10_6_28/src/MyAnalyzer/LHEMttbarAnalyzer/crab_projects_SM_rwgth_test/crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test
+INFO 2025-02-04 22:31:04.023 UTC: 	 Task name:			250204_222203:beozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test
+INFO 2025-02-04 22:31:04.023 UTC: 	 Grid scheduler - Task Worker:	crab3@vocms0195.cern.ch - crab-prod-tw01
+INFO 2025-02-04 22:31:04.023 UTC: 	 Status on the CRAB server:	SUBMITTED
+INFO 2025-02-04 22:31:04.023 UTC: 	 Task URL to use for HELP:	https://cmsweb.cern.ch/crabserver/ui/task/250204_222203%3Abeozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test
+INFO 2025-02-04 22:31:04.028 UTC: 	 Dashboard monitoring URL:	https://monit-grafana.cern.ch/d/cmsTMDetail/cms-task-monitoring-task-view?orgId=11&var-user=beozek&var-task=250204_222203%3Abeozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test&from=1738704123000&to=now
+DEBUG 2025-02-04 22:31:04.029 UTC: 	 The CRAB server submitted your task to the Grid scheduler (cluster ID: 114876859)
+DEBUG 2025-02-04 22:31:04.029 UTC: 	 Webdir is located at http://vocms0195.cern.ch/mon/beozek/250204_222203:beozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test
+DEBUG 2025-02-04 22:31:04.030 UTC: 	 Encoded data for curl request: subresource=webdirprx&workflow=250204_222203%3Abeozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test
+DEBUG 2025-02-04 22:31:04.078 UTC: 	 Proxied webdir is located at https://cmsweb.cern.ch:8443/scheddmon/0195/beozek/250204_222203:beozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test
+DEBUG 2025-02-04 22:31:04.079 UTC: 	 Retrieving 'status_cache' file from https://cmsweb.cern.ch:8443/scheddmon/0195/beozek/250204_222203:beozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test/status_cache.pkl
+DEBUG 2025-02-04 22:31:04.079 UTC: 	 Will execute:
+curl -sS --capath /etc/grid-security/certificates --cert /tmp/x509up_u139566 --key /tmp/x509up_u139566 -o /tmp/crab_status-cache-jtaln4xb.pkl -w %"{http_code}" "https://cmsweb.cern.ch:8443/scheddmon/0195/beozek/250204_222203:beozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test/status_cache.pkl"
+DEBUG 2025-02-04 22:31:04.079 UTC: 	 Executing command :
+ curl -sS --capath /etc/grid-security/certificates --cert /tmp/x509up_u139566 --key /tmp/x509up_u139566 -o /tmp/crab_status-cache-jtaln4xb.pkl -w %"{http_code}" "https://cmsweb.cern.ch:8443/scheddmon/0195/beozek/250204_222203:beozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test/status_cache.pkl"
+DEBUG 2025-02-04 22:31:04.121 UTC: 	 output : 200
+ error: 
+ retcode : 0
+DEBUG 2025-02-04 22:31:04.121 UTC: 	 exitcode: 0
+stdout: 200
+stderr: 
+error details: 
+DEBUG 2025-02-04 22:31:04.121 UTC: 	 Got information from status cache file: {'14': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T1_UK_RAL', 'T1_UK_RAL'], 'ResidentSetSize': [668784], 'SubmitTimes': [1738707880.0], 'StartTimes': [1738708002.0], 'EndTimes': [1738708148.0], 'TotalUserCpuTimeHistory': [70], 'TotalSysCpuTimeHistory': [2], 'WallDurations': [146.0, 239.31727933883667, 239.31727933883667], 'JobIds': ['114876870.0'], 'State': 'transferring', 'RecordedSite': True}, '10': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_DE_DESY', 'T2_DE_DESY'], 'ResidentSetSize': [653940], 'SubmitTimes': [1738707880.0], 'StartTimes': [1738708089.0], 'EndTimes': [1738708150.0], 'TotalUserCpuTimeHistory': [6], 'TotalSysCpuTimeHistory': [1], 'WallDurations': [61.0, 152.31727933883667, 152.31727933883667], 'JobIds': ['114876871.0'], 'State': 'finished', 'RecordedSite': True}, '12': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_BR_SPRACE', 'T2_BR_SPRACE'], 'ResidentSetSize': [62848], 'SubmitTimes': [1738707880.0], 'StartTimes': [1738708096.0], 'EndTimes': [], 'TotalUserCpuTimeHistory': [0.0], 'TotalSysCpuTimeHistory': [0.0], 'WallDurations': [8.0, 145.31727933883667, 145.31727933883667], 'JobIds': ['114876872.0'], 'State': 'running', 'RecordedSite': True}, '18': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T1_US_FNAL', 'T1_US_FNAL'], 'ResidentSetSize': [45452], 'SubmitTimes': [1738707880.0], 'StartTimes': [1738708014.0], 'EndTimes': [], 'TotalUserCpuTimeHistory': [0.0], 'TotalSysCpuTimeHistory': [0.0], 'WallDurations': [9.0, 227.31727933883667, 227.31727933883667], 'JobIds': ['114876873.0'], 'State': 'running', 'RecordedSite': True}, '6': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_IT_Bari', 'T2_IT_Bari'], 'ResidentSetSize': [56276], 'SubmitTimes': [1738707881.0], 'StartTimes': [1738708088.0], 'EndTimes': [1738708165.0], 'TotalUserCpuTimeHistory': [5], 'TotalSysCpuTimeHistory': [2], 'WallDurations': [77.0, 153.31727933883667, 153.31727933883667], 'JobIds': ['114876874.0'], 'State': 'transferring', 'RecordedSite': True}, '7': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_BE_UCL', 'T2_BE_UCL'], 'ResidentSetSize': [652008], 'SubmitTimes': [1738707881.0], 'StartTimes': [1738708088.0], 'EndTimes': [1738708213.0], 'TotalUserCpuTimeHistory': [2], 'TotalSysCpuTimeHistory': [0], 'WallDurations': [125.0, 153.31727933883667, 153.31727933883667], 'JobIds': ['114876875.0'], 'State': 'transferring', 'RecordedSite': True}, '1': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_US_Vanderbilt', 'T2_US_Vanderbilt'], 'ResidentSetSize': [66452], 'SubmitTimes': [1738707881.0], 'StartTimes': [1738708104.0], 'EndTimes': [1738708210.0], 'TotalUserCpuTimeHistory': [8], 'TotalSysCpuTimeHistory': [1], 'WallDurations': [106.0, 137.31727933883667, 137.31727933883667], 'JobIds': ['114876876.0'], 'State': 'transferring', 'RecordedSite': True}, '4': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_CH_CSCS', 'T2_CH_CSCS'], 'ResidentSetSize': [626392], 'SubmitTimes': [1738707881.0], 'StartTimes': [1738708087.0], 'EndTimes': [1738708168.0], 'TotalUserCpuTimeHistory': [3], 'TotalSysCpuTimeHistory': [1], 'WallDurations': [81.0, 154.31727933883667, 154.31727933883667], 'JobIds': ['114876877.0'], 'State': 'transferring', 'RecordedSite': True}, '16': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown'], 'ResidentSetSize': [0], 'SubmitTimes': [1738707881.0], 'StartTimes': [], 'EndTimes': [], 'TotalUserCpuTimeHistory': [0.0], 'TotalSysCpuTimeHistory': [0.0], 'WallDurations': [0], 'JobIds': ['114876878.0'], 'State': 'idle', 'RecordedSite': False}, '11': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_DE_DESY', 'T2_DE_DESY'], 'ResidentSetSize': [655328], 'SubmitTimes': [1738707887.0], 'StartTimes': [1738708088.0], 'EndTimes': [1738708150.0], 'TotalUserCpuTimeHistory': [8], 'TotalSysCpuTimeHistory': [1], 'WallDurations': [62.0, 153.31727933883667, 153.31727933883667], 'JobIds': ['114876879.0'], 'State': 'finished', 'RecordedSite': True}, '2': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_US_Florida', 'T2_US_Florida'], 'ResidentSetSize': [43668], 'SubmitTimes': [1738707887.0], 'StartTimes': [1738708105.0], 'EndTimes': [1738708168.0], 'TotalUserCpuTimeHistory': [7], 'TotalSysCpuTimeHistory': [0], 'WallDurations': [63.0, 136.31727933883667, 136.31727933883667], 'JobIds': ['114876880.0'], 'State': 'transferring', 'RecordedSite': True}, '3': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_IT_Bari', 'T2_IT_Bari'], 'ResidentSetSize': [30724], 'SubmitTimes': [1738707887.0], 'StartTimes': [1738708167.0], 'EndTimes': [], 'TotalUserCpuTimeHistory': [0.0], 'TotalSysCpuTimeHistory': [0.0], 'WallDurations': [9.0, 74.31727933883667, 74.31727933883667], 'JobIds': ['114876881.0'], 'State': 'running', 'RecordedSite': True}, '5': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_IT_Bari', 'T2_IT_Bari'], 'ResidentSetSize': [552884], 'SubmitTimes': [1738707887.0], 'StartTimes': [1738708089.0], 'EndTimes': [1738708179.0], 'TotalUserCpuTimeHistory': [10], 'TotalSysCpuTimeHistory': [3], 'WallDurations': [90.0, 152.31727933883667, 152.31727933883667], 'JobIds': ['114876882.0'], 'State': 'transferring', 'RecordedSite': True}, '8': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown'], 'ResidentSetSize': [0], 'SubmitTimes': [1738707887.0], 'StartTimes': [], 'EndTimes': [], 'TotalUserCpuTimeHistory': [0.0], 'TotalSysCpuTimeHistory': [0.0], 'WallDurations': [0], 'JobIds': ['114876883.0'], 'State': 'idle', 'RecordedSite': False}, '9': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T1_ES_PIC', 'T1_ES_PIC'], 'ResidentSetSize': [59944], 'SubmitTimes': [1738707887.0], 'StartTimes': [1738708004.0], 'EndTimes': [1738708202.0], 'TotalUserCpuTimeHistory': [14], 'TotalSysCpuTimeHistory': [1], 'WallDurations': [198.0, 237.31727933883667, 237.31727933883667], 'JobIds': ['114876884.0'], 'State': 'transferring', 'RecordedSite': True}, '13': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T1_UK_RAL', 'T1_UK_RAL'], 'ResidentSetSize': [4592], 'SubmitTimes': [1738707887.0], 'StartTimes': [1738708002.0], 'EndTimes': [], 'TotalUserCpuTimeHistory': [0.0], 'TotalSysCpuTimeHistory': [0.0], 'WallDurations': [9.0, 239.31727933883667, 239.31727933883667], 'JobIds': ['114876885.0'], 'State': 'running', 'RecordedSite': True}, '15': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T1_DE_KIT', 'T1_DE_KIT'], 'ResidentSetSize': [54932], 'SubmitTimes': [1738707887.0], 'StartTimes': [1738708001.0], 'EndTimes': [1738708065.0], 'TotalUserCpuTimeHistory': [11], 'TotalSysCpuTimeHistory': [2], 'WallDurations': [64.0, 240.31727933883667, 240.31727933883667], 'JobIds': ['114876886.0'], 'State': 'transferring', 'RecordedSite': True}, '17': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_IT_Pisa', 'T2_IT_Pisa'], 'ResidentSetSize': [3804], 'SubmitTimes': [1738707887.0], 'StartTimes': [1738708088.0], 'EndTimes': [], 'TotalUserCpuTimeHistory': [0.0], 'TotalSysCpuTimeHistory': [0.0], 'WallDurations': [8.0, 153.31727933883667, 153.31727933883667], 'JobIds': ['114876887.0'], 'State': 'running', 'RecordedSite': True}}
+INFO 2025-02-04 22:31:04.122 UTC: 	 Status on the scheduler:	SUBMITTED
+INFO 2025-02-04 22:31:04.122 UTC: 	 
+Jobs status:                    finished     		 11.1% ( 2/18)
+INFO 2025-02-04 22:31:04.122 UTC: 	 				idle         		 11.1% ( 2/18)
+INFO 2025-02-04 22:31:04.122 UTC: 	 				running      		 27.8% ( 5/18)
+INFO 2025-02-04 22:31:04.122 UTC: 	 				transferring 		 50.0% ( 9/18)
+INFO 2025-02-04 22:31:04.122 UTC: 	 
+No publication information (publication has been disabled in the CRAB configuration file)
+INFO 2025-02-04 22:31:04.122 UTC: 	 
+Warning: the max jobs runtime is less than 30% of the task requested value (1250 min), please consider to request a lower value for failed jobs (allowed through crab resubmit) and/or improve the jobs splitting (e.g. config.Data.splitting = 'Automatic') in a new task.
+INFO 2025-02-04 22:31:04.123 UTC: 	 
+Warning: the average jobs CPU efficiency is less than 50%, please consider to improve the jobs splitting (e.g. config.Data.splitting = 'Automatic') in a new task
+INFO 2025-02-04 22:31:04.123 UTC: 	 
+Summary of run jobs:
+ * Memory: 0MB min, 653MB max, 363MB ave
+ * Runtime: 0:00:00 min, 0:04:00 max, 0:02:53 ave
+ * CPU eff: 1% min, 30% max, 8% ave
+ * Waste: 0:49:42 (61% of total)
+
+INFO 2025-02-04 22:31:04.128 UTC: 	 Log file is /afs/cern.ch/user/b/beozek/private/CMSSW_10_6_28/src/MyAnalyzer/LHEMttbarAnalyzer/crab_projects_SM_rwgth_test/crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test/crab.log
+DEBUG 2025-02-04 23:09:00.202 UTC: 	 CRAB Client version: v3.241125
+DEBUG 2025-02-04 23:09:00.202 UTC: 	 Running on: Linux lxplus973.cern.ch 5.14.0-503.15.1.el9_5.x86_64 #1 SMP PREEMPT_DYNAMIC Thu Nov 14 15:45:31 EST 2024 x86_64 x86_64 x86_64 GNU/Linux
+DEBUG 2025-02-04 23:09:00.202 UTC: 	 Using SINGULARITY image: el7:x86_64
+DEBUG 2025-02-04 23:09:00.202 UTC: 	 Operating System: CentOS Linux 7 (Core)
+DEBUG 2025-02-04 23:09:00.202 UTC: 	 Executing command: 'status'
+DEBUG 2025-02-04 23:09:00.202 UTC: 	 Found CRAB cache file /afs/cern.ch/user/b/beozek/.crab3
+DEBUG 2025-02-04 23:09:00.209 UTC: 	 Checking credentials
+DEBUG 2025-02-04 23:09:00.209 UTC: 	 Found proxy file /tmp/x509up_u139566
+DEBUG 2025-02-04 23:09:00.209 UTC: 	 Making sure it has proper VOMS extension
+DEBUG 2025-02-04 23:09:00.210 UTC: 	 Executing command :
+ voms-proxy-info --vo --file /tmp/x509up_u139566
+DEBUG 2025-02-04 23:09:00.233 UTC: 	 output : cms
+
+ error: 
+ retcode : 0
+DEBUG 2025-02-04 23:09:00.233 UTC: 	 Getting proxy life time left
+DEBUG 2025-02-04 23:09:00.233 UTC: 	 Executing command :
+ voms-proxy-info --actimeleft --timeleft --file /tmp/x509up_u139566
+DEBUG 2025-02-04 23:09:00.256 UTC: 	 output : 684218
+684217
+
+ error: 
+ retcode : 0
+DEBUG 2025-02-04 23:09:00.257 UTC: 	 Proxy valid for 190:03:37 hours
+DEBUG 2025-02-04 23:09:00.257 UTC: 	 Encoded data for curl request: subresource=delegatedn
+DEBUG 2025-02-04 23:09:00.306 UTC: 	 Registering user credentials on myproxy for /DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(01|02).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-dev-tw(01|02|03|04).cern.ch|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=cmscrab/CN=(817881|373708)/CN=Robot: cms crab|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=crabint1/CN=373708/CN=Robot: CMS CRAB Integration 1
+DEBUG 2025-02-04 23:09:00.307 UTC: 	 Executing command :
+ voms-proxy-info --identity --file /tmp/x509up_u139566
+DEBUG 2025-02-04 23:09:00.330 UTC: 	 output : /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=beozek/CN=851337/CN=Beren Ozek
+
+ error: 
+ retcode : 0
+DEBUG 2025-02-04 23:09:00.330 UTC: 	 Getting myproxy life time left for 12f89c1afcc72f4407d8a7aa483b1b995adc434f
+DEBUG 2025-02-04 23:09:00.330 UTC: 	 Executing command :
+ myproxy-info -s myproxy.cern.ch -l 12f89c1afcc72f4407d8a7aa483b1b995adc434f
+DEBUG 2025-02-04 23:09:00.813 UTC: 	 output : username: 12f89c1afcc72f4407d8a7aa483b1b995adc434f
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=beozek/CN=851337/CN=Beren Ozek
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(01|02).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-dev-tw(01|02|03|04).cern.ch|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=cmscrab/CN=(817881|373708)/CN=Robot: cms crab|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=crabint1/CN=373708/CN=Robot: CMS CRAB Integration 1
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(01|02).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-dev-tw(01|02|03|04).cern.ch|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=cmscrab/CN=(817881|373708)/CN=Robot: cms crab|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=crabint1/CN=373708/CN=Robot: CMS CRAB Integration 1
+  timeleft: 719:12:57  (30.0 days)
+
+ error: 
+ retcode : 0
+DEBUG 2025-02-04 23:09:00.813 UTC: 	 Myproxy is valid: 2589120
+DEBUG 2025-02-04 23:09:00.813 UTC: 	 Result of myproxy credential check:
+  Credential exists on myproxy: username: 12f89c1afcc72f4407d8a7aa483b1b995adc434f  - validity: 29 days, 23:12:00
+DEBUG 2025-02-04 23:09:00.813 UTC: 	 Retrieving username ...
+DEBUG 2025-02-04 23:09:00.813 UTC: 	 Retrieving username from CRIC...
+DEBUG 2025-02-04 23:09:02.428 UTC: 	 username is beozek
+INFO 2025-02-04 23:09:02.706 UTC: 	 Rucio client intialized for account beozek
+DEBUG 2025-02-04 23:09:02.707 UTC: 	 Command use: status
+DEBUG 2025-02-04 23:09:02.707 UTC: 	 Options use: ['-d', 'crab_projects_SM_rwgth_test/crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test']
+DEBUG 2025-02-04 23:09:02.707 UTC: 	 Encoded data for curl request: subresource=version
+DEBUG 2025-02-04 23:09:02.748 UTC: 	 CRABClient version: v3.241125
+DEBUG 2025-02-04 23:09:02.748 UTC: 	 Instance is prod
+DEBUG 2025-02-04 23:09:02.748 UTC: 	 Server base url is cmsweb.cern.ch
+DEBUG 2025-02-04 23:09:02.748 UTC: 	 Command api workflow
+DEBUG 2025-02-04 23:09:02.748 UTC: 	 Encoded data for curl request: subresource=search&workflow=250204_222203%3Abeozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test
+DEBUG 2025-02-04 23:09:02.792 UTC: 	 Got information from server oracle database: {'desc': {'columns': ['tm_taskname', 'tm_activity', 'tm_task_status', 'tm_task_command', 'tm_start_time', 'tm_start_injection', 'tm_end_injection', 'tm_task_failure', 'tm_job_sw', 'tm_job_arch', 'tm_input_dataset', 'tm_nonvalid_input_dataset', 'tm_use_parent', 'tm_site_whitelist', 'tm_site_blacklist', 'tm_split_algo', 'tm_split_args', 'tm_user_sandbox', 'tm_cache_url', 'tm_username', 'tm_user_dn', 'tm_user_vo', 'tm_user_role', 'tm_user_group', 'tm_publish_name', 'tm_publish_groupname', 'tm_asyncdest', 'tm_dbs_url', 'tm_publish_dbs_url', 'tm_publication', 'tm_outfiles', 'tm_tfile_outfiles', 'tm_edm_outfiles', 'tm_job_type', 'tm_generator', 'tm_events_per_lumi', 'tm_arguments', 'tm_save_logs', 'tw_name', 'tm_user_infiles', 'tm_maxjobruntime', 'tm_numcores', 'tm_maxmemory', 'tm_priority', 'tm_output_dataset', 'tm_task_warnings', 'tm_user_webdir', 'tm_scriptexe', 'tm_scriptargs', 'tm_extrajdl', 'tm_collector', 'tm_schedd', 'tm_dry_run', 'tm_user_files', 'tm_transfer_outputs', 'tm_output_lfn', 'tm_ignore_locality', 'tm_fail_limit', 'tm_one_event_mode', 'tm_secondary_input_dataset', 'tm_primary_dataset', 'tm_last_publication', 'tm_debug_files', 'clusterid', 'tm_ignore_global_blacklist', 'tm_submitter_ip_addr', 'tm_totalunits', 'tm_ddm_reqid', 'tm_user_config', 'tm_transfer_container', 'tm_transfer_rule', 'tm_publish_rule', 'tm_multipub_rule', 'tm_job_min_microarch']}, 'result': ['250204_222203:beozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test', 'None', 'SUBMITTED', 'SUBMIT', '2025-02-04 22:22:03.930031', 'None', '2025-02-04 22:23:35.600490', 'None', 'CMSSW_10_6_28', 'slc7_amd64_gcc700', '/TTtoLNu2Q-1Jets-smeft_MTT-0to700_TuneCP5_13TeV_madgraphMLM-pythia8/RunIISummer20UL17MiniAODv2-106X_mc2017_realistic_v9-v3/MINIAODSIM', 'F', '0', '[]', '[]', 'FileBased', "{'halt_job_on_file_boundaries': False, 'splitOnRun': False, 'files_per_job': 5, 'runs': [], 'lumis': []}", '0e4e30474b291967201934c565e547f198ee6c31068fcda3461807cea975dbba.tar.gz', 'https://cmsweb.cern.ch/S3/crabcache_prod', 'beozek', '/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=beozek/CN=851337/CN=Beren Ozek', 'cms', 'None', 'None', 'LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test-00000000000000000000000000000000', 'F', 'T2_DE_DESY', 'https://cmsweb.cern.ch/dbs/prod/global/DBSReader', 'https://cmsweb.cern.ch/dbs/prod/phys03/DBSWriter', 'F', '[]', "['lhe_SM_0_700.root']", '[]', 'Analysis', 'pythia', 'None', '{}', 'F', 'crab-prod-tw01', '[]', '1250', '1', '2000', '10', "['/FakeDataset/fakefile-FakePublish-6adde14290d6022e38c048f718104213/USER']", '[]', 'http://vocms0195.cern.ch/mon/beozek/250204_222203:beozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test', 'None', '[]', '[]', 'cmsgwms-collector-global.cern.ch:9620,cmsgwms-collector-global.fnal.gov:9620', 'crab3@vocms0195.cern.ch', 'F', '[]', 'T', '/store/user/beozek/LHEMttbarAnalyzer/MTT0to700_SM_rwgth_test/', 'F', 'None', 'F', 'None', 'TTtoLNu2Q-1Jets-smeft_MTT-0to700_TuneCP5_13TeV_madgraphMLM-pythia8', 'None', 'a19f6269a976e4d65548ef9ce1c498fb68aa985314dc31785114a540693bb0a7.tar.gz', '114876859', 'F', '188.185.101.116', '20.0', 'None', '{"partialdataset": false, "requireaccelerator": false, "acceleratorparams": null, "inputblocks": null}', 'None', 'None', 'None', 'None', 'None']}
+INFO 2025-02-04 23:09:02.793 UTC: 	 CRAB project directory:		/afs/cern.ch/user/b/beozek/private/CMSSW_10_6_28/src/MyAnalyzer/LHEMttbarAnalyzer/crab_projects_SM_rwgth_test/crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test
+INFO 2025-02-04 23:09:02.793 UTC: 	 Task name:			250204_222203:beozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test
+INFO 2025-02-04 23:09:02.793 UTC: 	 Grid scheduler - Task Worker:	crab3@vocms0195.cern.ch - crab-prod-tw01
+INFO 2025-02-04 23:09:02.793 UTC: 	 Status on the CRAB server:	SUBMITTED
+INFO 2025-02-04 23:09:02.793 UTC: 	 Task URL to use for HELP:	https://cmsweb.cern.ch/crabserver/ui/task/250204_222203%3Abeozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test
+INFO 2025-02-04 23:09:02.798 UTC: 	 Dashboard monitoring URL:	https://monit-grafana.cern.ch/d/cmsTMDetail/cms-task-monitoring-task-view?orgId=11&var-user=beozek&var-task=250204_222203%3Abeozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test&from=1738704123000&to=now
+DEBUG 2025-02-04 23:09:02.799 UTC: 	 The CRAB server submitted your task to the Grid scheduler (cluster ID: 114876859)
+DEBUG 2025-02-04 23:09:02.799 UTC: 	 Webdir is located at http://vocms0195.cern.ch/mon/beozek/250204_222203:beozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test
+DEBUG 2025-02-04 23:09:02.799 UTC: 	 Encoded data for curl request: subresource=webdirprx&workflow=250204_222203%3Abeozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test
+DEBUG 2025-02-04 23:09:02.840 UTC: 	 Proxied webdir is located at https://cmsweb.cern.ch:8443/scheddmon/0195/beozek/250204_222203:beozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test
+DEBUG 2025-02-04 23:09:02.840 UTC: 	 Retrieving 'status_cache' file from https://cmsweb.cern.ch:8443/scheddmon/0195/beozek/250204_222203:beozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test/status_cache.pkl
+DEBUG 2025-02-04 23:09:02.840 UTC: 	 Will execute:
+curl -sS --capath /etc/grid-security/certificates --cert /tmp/x509up_u139566 --key /tmp/x509up_u139566 -o /tmp/crab_status-cache-f7_kl22k.pkl -w %"{http_code}" "https://cmsweb.cern.ch:8443/scheddmon/0195/beozek/250204_222203:beozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test/status_cache.pkl"
+DEBUG 2025-02-04 23:09:02.840 UTC: 	 Executing command :
+ curl -sS --capath /etc/grid-security/certificates --cert /tmp/x509up_u139566 --key /tmp/x509up_u139566 -o /tmp/crab_status-cache-f7_kl22k.pkl -w %"{http_code}" "https://cmsweb.cern.ch:8443/scheddmon/0195/beozek/250204_222203:beozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test/status_cache.pkl"
+DEBUG 2025-02-04 23:09:02.881 UTC: 	 output : 200
+ error: 
+ retcode : 0
+DEBUG 2025-02-04 23:09:02.881 UTC: 	 exitcode: 0
+stdout: 200
+stderr: 
+error details: 
+DEBUG 2025-02-04 23:09:02.882 UTC: 	 Got information from status cache file: {'14': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T1_UK_RAL', 'T1_UK_RAL'], 'ResidentSetSize': [668784], 'SubmitTimes': [1738707880.0], 'StartTimes': [1738708002.0], 'EndTimes': [1738708148.0], 'TotalUserCpuTimeHistory': [70], 'TotalSysCpuTimeHistory': [2], 'WallDurations': [146.0, 239.31727933883667, 239.31727933883667], 'JobIds': ['114876870.0'], 'State': 'finished', 'RecordedSite': True}, '10': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_DE_DESY', 'T2_DE_DESY'], 'ResidentSetSize': [653940], 'SubmitTimes': [1738707880.0], 'StartTimes': [1738708089.0], 'EndTimes': [1738708150.0], 'TotalUserCpuTimeHistory': [6], 'TotalSysCpuTimeHistory': [1], 'WallDurations': [61.0, 152.31727933883667, 152.31727933883667], 'JobIds': ['114876871.0'], 'State': 'finished', 'RecordedSite': True}, '12': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_BR_SPRACE', 'T2_BR_SPRACE'], 'ResidentSetSize': [62848], 'SubmitTimes': [1738707880.0], 'StartTimes': [1738708096.0], 'EndTimes': [1738708301.0], 'TotalUserCpuTimeHistory': [15], 'TotalSysCpuTimeHistory': [0], 'WallDurations': [8.0, 145.31727933883667, 205.0], 'JobIds': ['114876872.0'], 'State': 'finished', 'RecordedSite': True}, '18': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T1_US_FNAL', 'T1_US_FNAL'], 'ResidentSetSize': [58452], 'SubmitTimes': [1738707880.0], 'StartTimes': [1738708014.0], 'EndTimes': [1738708410.0], 'TotalUserCpuTimeHistory': [52], 'TotalSysCpuTimeHistory': [2], 'WallDurations': [9.0, 227.31727933883667, 396.0], 'JobIds': ['114876873.0'], 'State': 'finished', 'RecordedSite': True}, '6': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_IT_Bari', 'T2_IT_Bari'], 'ResidentSetSize': [56276], 'SubmitTimes': [1738707881.0], 'StartTimes': [1738708088.0], 'EndTimes': [1738708165.0], 'TotalUserCpuTimeHistory': [5], 'TotalSysCpuTimeHistory': [2], 'WallDurations': [77.0, 153.31727933883667, 153.31727933883667], 'JobIds': ['114876874.0'], 'State': 'finished', 'RecordedSite': True}, '7': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_BE_UCL', 'T2_BE_UCL'], 'ResidentSetSize': [652008], 'SubmitTimes': [1738707881.0], 'StartTimes': [1738708088.0], 'EndTimes': [1738708213.0], 'TotalUserCpuTimeHistory': [2], 'TotalSysCpuTimeHistory': [0], 'WallDurations': [125.0, 153.31727933883667, 153.31727933883667], 'JobIds': ['114876875.0'], 'State': 'finished', 'RecordedSite': True}, '1': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_US_Vanderbilt', 'T2_US_Vanderbilt'], 'ResidentSetSize': [66452], 'SubmitTimes': [1738707881.0], 'StartTimes': [1738708104.0], 'EndTimes': [1738708210.0], 'TotalUserCpuTimeHistory': [8], 'TotalSysCpuTimeHistory': [1], 'WallDurations': [106.0, 137.31727933883667, 137.31727933883667], 'JobIds': ['114876876.0'], 'State': 'finished', 'RecordedSite': True}, '4': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_CH_CSCS', 'T2_CH_CSCS'], 'ResidentSetSize': [626392], 'SubmitTimes': [1738707881.0], 'StartTimes': [1738708087.0], 'EndTimes': [1738708168.0], 'TotalUserCpuTimeHistory': [3], 'TotalSysCpuTimeHistory': [1], 'WallDurations': [81.0, 154.31727933883667, 154.31727933883667], 'JobIds': ['114876877.0'], 'State': 'finished', 'RecordedSite': True}, '16': {'Retries': 1, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_IT_Pisa', 'T2_IT_Pisa', 'T2_CH_CERN', 'T2_CH_CERN'], 'ResidentSetSize': [44592, 513484], 'SubmitTimes': [1738707881.0, 1738708466.0], 'StartTimes': [1738708337.0, 1738708824.0], 'EndTimes': [1738708398.0, 1738709066.0], 'TotalUserCpuTimeHistory': [1, 177], 'TotalSysCpuTimeHistory': [0, 4], 'WallDurations': [61.0, 0, 8.0, 22.909566164016724, 242.0], 'JobIds': ['114876878.0', '114877063.0'], 'State': 'transferring', 'RecordedSite': True}, '11': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_DE_DESY', 'T2_DE_DESY'], 'ResidentSetSize': [655328], 'SubmitTimes': [1738707887.0], 'StartTimes': [1738708088.0], 'EndTimes': [1738708150.0], 'TotalUserCpuTimeHistory': [8], 'TotalSysCpuTimeHistory': [1], 'WallDurations': [62.0, 153.31727933883667, 153.31727933883667], 'JobIds': ['114876879.0'], 'State': 'finished', 'RecordedSite': True}, '2': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_US_Florida', 'T2_US_Florida'], 'ResidentSetSize': [43668], 'SubmitTimes': [1738707887.0], 'StartTimes': [1738708105.0], 'EndTimes': [1738708168.0], 'TotalUserCpuTimeHistory': [7], 'TotalSysCpuTimeHistory': [0], 'WallDurations': [63.0, 136.31727933883667, 136.31727933883667], 'JobIds': ['114876880.0'], 'State': 'finished', 'RecordedSite': True}, '3': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_IT_Bari', 'T2_IT_Bari'], 'ResidentSetSize': [48856], 'SubmitTimes': [1738707887.0], 'StartTimes': [1738708167.0], 'EndTimes': [1738708359.0], 'TotalUserCpuTimeHistory': [7], 'TotalSysCpuTimeHistory': [2], 'WallDurations': [9.0, 74.31727933883667, 192.0], 'JobIds': ['114876881.0'], 'State': 'transferring', 'RecordedSite': True}, '5': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_IT_Bari', 'T2_IT_Bari'], 'ResidentSetSize': [552884], 'SubmitTimes': [1738707887.0], 'StartTimes': [1738708089.0], 'EndTimes': [1738708179.0], 'TotalUserCpuTimeHistory': [10], 'TotalSysCpuTimeHistory': [3], 'WallDurations': [90.0, 152.31727933883667, 152.31727933883667], 'JobIds': ['114876882.0'], 'State': 'transferring', 'RecordedSite': True}, '8': {'Retries': 2, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_FR_GRIF', 'T2_FR_GRIF', 'T2_FR_GRIF', 'T2_FR_GRIF', 'T2_US_Florida', 'T2_US_Florida'], 'ResidentSetSize': [110940, 146684, 140260], 'SubmitTimes': [1738707887.0, 1738708471.0, 1738708778.0], 'StartTimes': [1738708339.0, 1738708585.0, 1738708886.0], 'EndTimes': [1738708401.0, 1738708650.0, 1738708949.0], 'TotalUserCpuTimeHistory': [2, 1, 0], 'TotalSysCpuTimeHistory': [0, 0, 0], 'WallDurations': [62.0, 0, 65.0, 0, 63.0, 262.5795600414276, 262.5795600414276], 'JobIds': ['114876883.0', '114877065.0', '114877115.0'], 'State': 'transferring', 'RecordedSite': True}, '9': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T1_ES_PIC', 'T1_ES_PIC'], 'ResidentSetSize': [59944], 'SubmitTimes': [1738707887.0], 'StartTimes': [1738708004.0], 'EndTimes': [1738708202.0], 'TotalUserCpuTimeHistory': [14], 'TotalSysCpuTimeHistory': [1], 'WallDurations': [198.0, 237.31727933883667, 237.31727933883667], 'JobIds': ['114876884.0'], 'State': 'finished', 'RecordedSite': True}, '13': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T1_UK_RAL', 'T1_UK_RAL'], 'ResidentSetSize': [650304], 'SubmitTimes': [1738707887.0], 'StartTimes': [1738708002.0], 'EndTimes': [1738708293.0], 'TotalUserCpuTimeHistory': [170], 'TotalSysCpuTimeHistory': [4], 'WallDurations': [9.0, 239.31727933883667, 291.0], 'JobIds': ['114876885.0'], 'State': 'finished', 'RecordedSite': True}, '15': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T1_DE_KIT', 'T1_DE_KIT'], 'ResidentSetSize': [54932], 'SubmitTimes': [1738707887.0], 'StartTimes': [1738708001.0], 'EndTimes': [1738708065.0], 'TotalUserCpuTimeHistory': [11], 'TotalSysCpuTimeHistory': [2], 'WallDurations': [64.0, 240.31727933883667, 240.31727933883667], 'JobIds': ['114876886.0'], 'State': 'finished', 'RecordedSite': True}, '17': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_IT_Pisa', 'T2_IT_Pisa'], 'ResidentSetSize': [547856], 'SubmitTimes': [1738707887.0], 'StartTimes': [1738708088.0], 'EndTimes': [1738708448.0], 'TotalUserCpuTimeHistory': [172], 'TotalSysCpuTimeHistory': [9], 'WallDurations': [8.0, 153.31727933883667, 360.0], 'JobIds': ['114876887.0'], 'State': 'finished', 'RecordedSite': True}}
+INFO 2025-02-04 23:09:02.882 UTC: 	 Status on the scheduler:	SUBMITTED
+INFO 2025-02-04 23:09:02.882 UTC: 	 
+Jobs status:                    finished     		 77.8% (14/18)
+INFO 2025-02-04 23:09:02.882 UTC: 	 				transferring 		 22.2% ( 4/18)
+INFO 2025-02-04 23:09:02.882 UTC: 	 
+No publication information (publication has been disabled in the CRAB configuration file)
+INFO 2025-02-04 23:09:02.882 UTC: 	 
+Warning: the max jobs runtime is less than 30% of the task requested value (1250 min), please consider to request a lower value for failed jobs (allowed through crab resubmit) and/or improve the jobs splitting (e.g. config.Data.splitting = 'Automatic') in a new task.
+INFO 2025-02-04 23:09:02.883 UTC: 	 
+Warning: the average jobs CPU efficiency is less than 50%, please consider to improve the jobs splitting (e.g. config.Data.splitting = 'Automatic') in a new task
+INFO 2025-02-04 23:09:02.883 UTC: 	 
+Summary of run jobs:
+ * Memory: 64MB min, 653MB max, 332MB ave
+ * Runtime: 0:02:16 min, 0:06:36 max, 0:03:34 ave
+ * CPU eff: 0% min, 75% max, 20% ave
+ * Waste: 1:13:29 (53% of total)
+
+INFO 2025-02-04 23:09:02.898 UTC: 	 Log file is /afs/cern.ch/user/b/beozek/private/CMSSW_10_6_28/src/MyAnalyzer/LHEMttbarAnalyzer/crab_projects_SM_rwgth_test/crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test/crab.log
+DEBUG 2025-02-04 23:23:52.348 UTC: 	 CRAB Client version: v3.241125
+DEBUG 2025-02-04 23:23:52.349 UTC: 	 Running on: Linux lxplus973.cern.ch 5.14.0-503.15.1.el9_5.x86_64 #1 SMP PREEMPT_DYNAMIC Thu Nov 14 15:45:31 EST 2024 x86_64 x86_64 x86_64 GNU/Linux
+DEBUG 2025-02-04 23:23:52.349 UTC: 	 Using SINGULARITY image: el7:x86_64
+DEBUG 2025-02-04 23:23:52.349 UTC: 	 Operating System: CentOS Linux 7 (Core)
+DEBUG 2025-02-04 23:23:52.349 UTC: 	 Executing command: 'status'
+DEBUG 2025-02-04 23:23:52.349 UTC: 	 Found CRAB cache file /afs/cern.ch/user/b/beozek/.crab3
+DEBUG 2025-02-04 23:23:52.354 UTC: 	 Checking credentials
+DEBUG 2025-02-04 23:23:52.354 UTC: 	 Found proxy file /tmp/x509up_u139566
+DEBUG 2025-02-04 23:23:52.354 UTC: 	 Making sure it has proper VOMS extension
+DEBUG 2025-02-04 23:23:52.354 UTC: 	 Executing command :
+ voms-proxy-info --vo --file /tmp/x509up_u139566
+DEBUG 2025-02-04 23:23:52.379 UTC: 	 output : cms
+
+ error: 
+ retcode : 0
+DEBUG 2025-02-04 23:23:52.379 UTC: 	 Getting proxy life time left
+DEBUG 2025-02-04 23:23:52.379 UTC: 	 Executing command :
+ voms-proxy-info --actimeleft --timeleft --file /tmp/x509up_u139566
+DEBUG 2025-02-04 23:23:52.402 UTC: 	 output : 683326
+683325
+
+ error: 
+ retcode : 0
+DEBUG 2025-02-04 23:23:52.402 UTC: 	 Proxy valid for 189:48:45 hours
+DEBUG 2025-02-04 23:23:52.402 UTC: 	 Encoded data for curl request: subresource=delegatedn
+DEBUG 2025-02-04 23:23:52.443 UTC: 	 Registering user credentials on myproxy for /DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(01|02).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-dev-tw(01|02|03|04).cern.ch|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=cmscrab/CN=(817881|373708)/CN=Robot: cms crab|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=crabint1/CN=373708/CN=Robot: CMS CRAB Integration 1
+DEBUG 2025-02-04 23:23:52.443 UTC: 	 Executing command :
+ voms-proxy-info --identity --file /tmp/x509up_u139566
+DEBUG 2025-02-04 23:23:52.482 UTC: 	 output : /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=beozek/CN=851337/CN=Beren Ozek
+
+ error: 
+ retcode : 0
+DEBUG 2025-02-04 23:23:52.482 UTC: 	 Getting myproxy life time left for 12f89c1afcc72f4407d8a7aa483b1b995adc434f
+DEBUG 2025-02-04 23:23:52.482 UTC: 	 Executing command :
+ myproxy-info -s myproxy.cern.ch -l 12f89c1afcc72f4407d8a7aa483b1b995adc434f
+DEBUG 2025-02-04 23:23:52.769 UTC: 	 output : username: 12f89c1afcc72f4407d8a7aa483b1b995adc434f
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=beozek/CN=851337/CN=Beren Ozek
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(01|02).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-dev-tw(01|02|03|04).cern.ch|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=cmscrab/CN=(817881|373708)/CN=Robot: cms crab|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=crabint1/CN=373708/CN=Robot: CMS CRAB Integration 1
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(01|02).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-dev-tw(01|02|03|04).cern.ch|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=cmscrab/CN=(817881|373708)/CN=Robot: cms crab|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=crabint1/CN=373708/CN=Robot: CMS CRAB Integration 1
+  timeleft: 718:58:05  (30.0 days)
+
+ error: 
+ retcode : 0
+DEBUG 2025-02-04 23:23:52.769 UTC: 	 Myproxy is valid: 2588280
+DEBUG 2025-02-04 23:23:52.769 UTC: 	 Result of myproxy credential check:
+  Credential exists on myproxy: username: 12f89c1afcc72f4407d8a7aa483b1b995adc434f  - validity: 29 days, 22:58:00
+DEBUG 2025-02-04 23:23:52.770 UTC: 	 Retrieving username ...
+DEBUG 2025-02-04 23:23:52.770 UTC: 	 Retrieving username from CRIC...
+DEBUG 2025-02-04 23:23:53.468 UTC: 	 username is beozek
+INFO 2025-02-04 23:23:53.839 UTC: 	 Rucio client intialized for account beozek
+DEBUG 2025-02-04 23:23:53.839 UTC: 	 Command use: status
+DEBUG 2025-02-04 23:23:53.839 UTC: 	 Options use: ['-d', 'crab_projects_SM_rwgth_test/crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test']
+DEBUG 2025-02-04 23:23:53.839 UTC: 	 Encoded data for curl request: subresource=version
+DEBUG 2025-02-04 23:23:53.881 UTC: 	 CRABClient version: v3.241125
+DEBUG 2025-02-04 23:23:53.881 UTC: 	 Instance is prod
+DEBUG 2025-02-04 23:23:53.881 UTC: 	 Server base url is cmsweb.cern.ch
+DEBUG 2025-02-04 23:23:53.881 UTC: 	 Command api workflow
+DEBUG 2025-02-04 23:23:53.882 UTC: 	 Encoded data for curl request: subresource=search&workflow=250204_222203%3Abeozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test
+DEBUG 2025-02-04 23:23:53.937 UTC: 	 Got information from server oracle database: {'desc': {'columns': ['tm_taskname', 'tm_activity', 'tm_task_status', 'tm_task_command', 'tm_start_time', 'tm_start_injection', 'tm_end_injection', 'tm_task_failure', 'tm_job_sw', 'tm_job_arch', 'tm_input_dataset', 'tm_nonvalid_input_dataset', 'tm_use_parent', 'tm_site_whitelist', 'tm_site_blacklist', 'tm_split_algo', 'tm_split_args', 'tm_user_sandbox', 'tm_cache_url', 'tm_username', 'tm_user_dn', 'tm_user_vo', 'tm_user_role', 'tm_user_group', 'tm_publish_name', 'tm_publish_groupname', 'tm_asyncdest', 'tm_dbs_url', 'tm_publish_dbs_url', 'tm_publication', 'tm_outfiles', 'tm_tfile_outfiles', 'tm_edm_outfiles', 'tm_job_type', 'tm_generator', 'tm_events_per_lumi', 'tm_arguments', 'tm_save_logs', 'tw_name', 'tm_user_infiles', 'tm_maxjobruntime', 'tm_numcores', 'tm_maxmemory', 'tm_priority', 'tm_output_dataset', 'tm_task_warnings', 'tm_user_webdir', 'tm_scriptexe', 'tm_scriptargs', 'tm_extrajdl', 'tm_collector', 'tm_schedd', 'tm_dry_run', 'tm_user_files', 'tm_transfer_outputs', 'tm_output_lfn', 'tm_ignore_locality', 'tm_fail_limit', 'tm_one_event_mode', 'tm_secondary_input_dataset', 'tm_primary_dataset', 'tm_last_publication', 'tm_debug_files', 'clusterid', 'tm_ignore_global_blacklist', 'tm_submitter_ip_addr', 'tm_totalunits', 'tm_ddm_reqid', 'tm_user_config', 'tm_transfer_container', 'tm_transfer_rule', 'tm_publish_rule', 'tm_multipub_rule', 'tm_job_min_microarch']}, 'result': ['250204_222203:beozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test', 'None', 'SUBMITTED', 'SUBMIT', '2025-02-04 22:22:03.930031', 'None', '2025-02-04 22:23:35.600490', 'None', 'CMSSW_10_6_28', 'slc7_amd64_gcc700', '/TTtoLNu2Q-1Jets-smeft_MTT-0to700_TuneCP5_13TeV_madgraphMLM-pythia8/RunIISummer20UL17MiniAODv2-106X_mc2017_realistic_v9-v3/MINIAODSIM', 'F', '0', '[]', '[]', 'FileBased', "{'halt_job_on_file_boundaries': False, 'splitOnRun': False, 'files_per_job': 5, 'runs': [], 'lumis': []}", '0e4e30474b291967201934c565e547f198ee6c31068fcda3461807cea975dbba.tar.gz', 'https://cmsweb.cern.ch/S3/crabcache_prod', 'beozek', '/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=beozek/CN=851337/CN=Beren Ozek', 'cms', 'None', 'None', 'LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test-00000000000000000000000000000000', 'F', 'T2_DE_DESY', 'https://cmsweb.cern.ch/dbs/prod/global/DBSReader', 'https://cmsweb.cern.ch/dbs/prod/phys03/DBSWriter', 'F', '[]', "['lhe_SM_0_700.root']", '[]', 'Analysis', 'pythia', 'None', '{}', 'F', 'crab-prod-tw01', '[]', '1250', '1', '2000', '10', "['/FakeDataset/fakefile-FakePublish-6adde14290d6022e38c048f718104213/USER']", '[]', 'http://vocms0195.cern.ch/mon/beozek/250204_222203:beozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test', 'None', '[]', '[]', 'cmsgwms-collector-global.cern.ch:9620,cmsgwms-collector-global.fnal.gov:9620', 'crab3@vocms0195.cern.ch', 'F', '[]', 'T', '/store/user/beozek/LHEMttbarAnalyzer/MTT0to700_SM_rwgth_test/', 'F', 'None', 'F', 'None', 'TTtoLNu2Q-1Jets-smeft_MTT-0to700_TuneCP5_13TeV_madgraphMLM-pythia8', 'None', 'a19f6269a976e4d65548ef9ce1c498fb68aa985314dc31785114a540693bb0a7.tar.gz', '114876859', 'F', '188.185.101.116', '20.0', 'None', '{"partialdataset": false, "requireaccelerator": false, "acceleratorparams": null, "inputblocks": null}', 'None', 'None', 'None', 'None', 'None']}
+INFO 2025-02-04 23:23:53.937 UTC: 	 CRAB project directory:		/afs/cern.ch/user/b/beozek/private/CMSSW_10_6_28/src/MyAnalyzer/LHEMttbarAnalyzer/crab_projects_SM_rwgth_test/crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test
+INFO 2025-02-04 23:23:53.937 UTC: 	 Task name:			250204_222203:beozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test
+INFO 2025-02-04 23:23:53.937 UTC: 	 Grid scheduler - Task Worker:	crab3@vocms0195.cern.ch - crab-prod-tw01
+INFO 2025-02-04 23:23:53.937 UTC: 	 Status on the CRAB server:	SUBMITTED
+INFO 2025-02-04 23:23:53.938 UTC: 	 Task URL to use for HELP:	https://cmsweb.cern.ch/crabserver/ui/task/250204_222203%3Abeozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test
+INFO 2025-02-04 23:23:53.943 UTC: 	 Dashboard monitoring URL:	https://monit-grafana.cern.ch/d/cmsTMDetail/cms-task-monitoring-task-view?orgId=11&var-user=beozek&var-task=250204_222203%3Abeozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test&from=1738704123000&to=now
+DEBUG 2025-02-04 23:23:53.943 UTC: 	 The CRAB server submitted your task to the Grid scheduler (cluster ID: 114876859)
+DEBUG 2025-02-04 23:23:53.943 UTC: 	 Webdir is located at http://vocms0195.cern.ch/mon/beozek/250204_222203:beozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test
+DEBUG 2025-02-04 23:23:53.943 UTC: 	 Encoded data for curl request: subresource=webdirprx&workflow=250204_222203%3Abeozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test
+DEBUG 2025-02-04 23:23:54.000 UTC: 	 Proxied webdir is located at https://cmsweb.cern.ch:8443/scheddmon/0195/beozek/250204_222203:beozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test
+DEBUG 2025-02-04 23:23:54.000 UTC: 	 Retrieving 'status_cache' file from https://cmsweb.cern.ch:8443/scheddmon/0195/beozek/250204_222203:beozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test/status_cache.pkl
+DEBUG 2025-02-04 23:23:54.000 UTC: 	 Will execute:
+curl -sS --capath /etc/grid-security/certificates --cert /tmp/x509up_u139566 --key /tmp/x509up_u139566 -o /tmp/crab_status-cache-gwm7fn1_.pkl -w %"{http_code}" "https://cmsweb.cern.ch:8443/scheddmon/0195/beozek/250204_222203:beozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test/status_cache.pkl"
+DEBUG 2025-02-04 23:23:54.000 UTC: 	 Executing command :
+ curl -sS --capath /etc/grid-security/certificates --cert /tmp/x509up_u139566 --key /tmp/x509up_u139566 -o /tmp/crab_status-cache-gwm7fn1_.pkl -w %"{http_code}" "https://cmsweb.cern.ch:8443/scheddmon/0195/beozek/250204_222203:beozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test/status_cache.pkl"
+DEBUG 2025-02-04 23:23:54.038 UTC: 	 output : 200
+ error: 
+ retcode : 0
+DEBUG 2025-02-04 23:23:54.038 UTC: 	 exitcode: 0
+stdout: 200
+stderr: 
+error details: 
+DEBUG 2025-02-04 23:23:54.038 UTC: 	 Got information from status cache file: {'14': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T1_UK_RAL', 'T1_UK_RAL'], 'ResidentSetSize': [668784], 'SubmitTimes': [1738707880.0], 'StartTimes': [1738708002.0], 'EndTimes': [1738708148.0], 'TotalUserCpuTimeHistory': [70], 'TotalSysCpuTimeHistory': [2], 'WallDurations': [146.0, 239.31727933883667, 239.31727933883667], 'JobIds': ['114876870.0'], 'State': 'finished', 'RecordedSite': True}, '10': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_DE_DESY', 'T2_DE_DESY'], 'ResidentSetSize': [653940], 'SubmitTimes': [1738707880.0], 'StartTimes': [1738708089.0], 'EndTimes': [1738708150.0], 'TotalUserCpuTimeHistory': [6], 'TotalSysCpuTimeHistory': [1], 'WallDurations': [61.0, 152.31727933883667, 152.31727933883667], 'JobIds': ['114876871.0'], 'State': 'finished', 'RecordedSite': True}, '12': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_BR_SPRACE', 'T2_BR_SPRACE'], 'ResidentSetSize': [62848], 'SubmitTimes': [1738707880.0], 'StartTimes': [1738708096.0], 'EndTimes': [1738708301.0], 'TotalUserCpuTimeHistory': [15], 'TotalSysCpuTimeHistory': [0], 'WallDurations': [8.0, 145.31727933883667, 205.0], 'JobIds': ['114876872.0'], 'State': 'finished', 'RecordedSite': True}, '18': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T1_US_FNAL', 'T1_US_FNAL'], 'ResidentSetSize': [58452], 'SubmitTimes': [1738707880.0], 'StartTimes': [1738708014.0], 'EndTimes': [1738708410.0], 'TotalUserCpuTimeHistory': [52], 'TotalSysCpuTimeHistory': [2], 'WallDurations': [9.0, 227.31727933883667, 396.0], 'JobIds': ['114876873.0'], 'State': 'finished', 'RecordedSite': True}, '6': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_IT_Bari', 'T2_IT_Bari'], 'ResidentSetSize': [56276], 'SubmitTimes': [1738707881.0], 'StartTimes': [1738708088.0], 'EndTimes': [1738708165.0], 'TotalUserCpuTimeHistory': [5], 'TotalSysCpuTimeHistory': [2], 'WallDurations': [77.0, 153.31727933883667, 153.31727933883667], 'JobIds': ['114876874.0'], 'State': 'finished', 'RecordedSite': True}, '7': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_BE_UCL', 'T2_BE_UCL'], 'ResidentSetSize': [652008], 'SubmitTimes': [1738707881.0], 'StartTimes': [1738708088.0], 'EndTimes': [1738708213.0], 'TotalUserCpuTimeHistory': [2], 'TotalSysCpuTimeHistory': [0], 'WallDurations': [125.0, 153.31727933883667, 153.31727933883667], 'JobIds': ['114876875.0'], 'State': 'finished', 'RecordedSite': True}, '1': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_US_Vanderbilt', 'T2_US_Vanderbilt'], 'ResidentSetSize': [66452], 'SubmitTimes': [1738707881.0], 'StartTimes': [1738708104.0], 'EndTimes': [1738708210.0], 'TotalUserCpuTimeHistory': [8], 'TotalSysCpuTimeHistory': [1], 'WallDurations': [106.0, 137.31727933883667, 137.31727933883667], 'JobIds': ['114876876.0'], 'State': 'finished', 'RecordedSite': True}, '4': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_CH_CSCS', 'T2_CH_CSCS'], 'ResidentSetSize': [626392], 'SubmitTimes': [1738707881.0], 'StartTimes': [1738708087.0], 'EndTimes': [1738708168.0], 'TotalUserCpuTimeHistory': [3], 'TotalSysCpuTimeHistory': [1], 'WallDurations': [81.0, 154.31727933883667, 154.31727933883667], 'JobIds': ['114876877.0'], 'State': 'finished', 'RecordedSite': True}, '16': {'Retries': 1, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_IT_Pisa', 'T2_IT_Pisa', 'T2_CH_CERN', 'T2_CH_CERN'], 'ResidentSetSize': [44592, 513484], 'SubmitTimes': [1738707881.0, 1738708466.0], 'StartTimes': [1738708337.0, 1738708824.0], 'EndTimes': [1738708398.0, 1738709066.0], 'TotalUserCpuTimeHistory': [1, 177], 'TotalSysCpuTimeHistory': [0, 4], 'WallDurations': [61.0, 0, 8.0, 22.909566164016724, 242.0], 'JobIds': ['114876878.0', '114877063.0'], 'State': 'finished', 'RecordedSite': True}, '11': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_DE_DESY', 'T2_DE_DESY'], 'ResidentSetSize': [655328], 'SubmitTimes': [1738707887.0], 'StartTimes': [1738708088.0], 'EndTimes': [1738708150.0], 'TotalUserCpuTimeHistory': [8], 'TotalSysCpuTimeHistory': [1], 'WallDurations': [62.0, 153.31727933883667, 153.31727933883667], 'JobIds': ['114876879.0'], 'State': 'finished', 'RecordedSite': True}, '2': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_US_Florida', 'T2_US_Florida'], 'ResidentSetSize': [43668], 'SubmitTimes': [1738707887.0], 'StartTimes': [1738708105.0], 'EndTimes': [1738708168.0], 'TotalUserCpuTimeHistory': [7], 'TotalSysCpuTimeHistory': [0], 'WallDurations': [63.0, 136.31727933883667, 136.31727933883667], 'JobIds': ['114876880.0'], 'State': 'finished', 'RecordedSite': True}, '3': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_IT_Bari', 'T2_IT_Bari'], 'ResidentSetSize': [48856], 'SubmitTimes': [1738707887.0], 'StartTimes': [1738708167.0], 'EndTimes': [1738708359.0], 'TotalUserCpuTimeHistory': [7], 'TotalSysCpuTimeHistory': [2], 'WallDurations': [9.0, 74.31727933883667, 192.0], 'JobIds': ['114876881.0'], 'State': 'transferring', 'RecordedSite': True}, '5': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_IT_Bari', 'T2_IT_Bari'], 'ResidentSetSize': [552884], 'SubmitTimes': [1738707887.0], 'StartTimes': [1738708089.0], 'EndTimes': [1738708179.0], 'TotalUserCpuTimeHistory': [10], 'TotalSysCpuTimeHistory': [3], 'WallDurations': [90.0, 152.31727933883667, 152.31727933883667], 'JobIds': ['114876882.0'], 'State': 'transferring', 'RecordedSite': True}, '8': {'Retries': 2, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_FR_GRIF', 'T2_FR_GRIF', 'T2_FR_GRIF', 'T2_FR_GRIF', 'T2_US_Florida', 'T2_US_Florida'], 'ResidentSetSize': [110940, 146684, 140260], 'SubmitTimes': [1738707887.0, 1738708471.0, 1738708778.0], 'StartTimes': [1738708339.0, 1738708585.0, 1738708886.0], 'EndTimes': [1738708401.0, 1738708650.0, 1738708949.0], 'TotalUserCpuTimeHistory': [2, 1, 0], 'TotalSysCpuTimeHistory': [0, 0, 0], 'WallDurations': [62.0, 0, 65.0, 0, 63.0, 262.5795600414276, 262.5795600414276], 'JobIds': ['114876883.0', '114877065.0', '114877115.0'], 'State': 'finished', 'RecordedSite': True}, '9': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T1_ES_PIC', 'T1_ES_PIC'], 'ResidentSetSize': [59944], 'SubmitTimes': [1738707887.0], 'StartTimes': [1738708004.0], 'EndTimes': [1738708202.0], 'TotalUserCpuTimeHistory': [14], 'TotalSysCpuTimeHistory': [1], 'WallDurations': [198.0, 237.31727933883667, 237.31727933883667], 'JobIds': ['114876884.0'], 'State': 'finished', 'RecordedSite': True}, '13': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T1_UK_RAL', 'T1_UK_RAL'], 'ResidentSetSize': [650304], 'SubmitTimes': [1738707887.0], 'StartTimes': [1738708002.0], 'EndTimes': [1738708293.0], 'TotalUserCpuTimeHistory': [170], 'TotalSysCpuTimeHistory': [4], 'WallDurations': [9.0, 239.31727933883667, 291.0], 'JobIds': ['114876885.0'], 'State': 'finished', 'RecordedSite': True}, '15': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T1_DE_KIT', 'T1_DE_KIT'], 'ResidentSetSize': [54932], 'SubmitTimes': [1738707887.0], 'StartTimes': [1738708001.0], 'EndTimes': [1738708065.0], 'TotalUserCpuTimeHistory': [11], 'TotalSysCpuTimeHistory': [2], 'WallDurations': [64.0, 240.31727933883667, 240.31727933883667], 'JobIds': ['114876886.0'], 'State': 'finished', 'RecordedSite': True}, '17': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_IT_Pisa', 'T2_IT_Pisa'], 'ResidentSetSize': [547856], 'SubmitTimes': [1738707887.0], 'StartTimes': [1738708088.0], 'EndTimes': [1738708448.0], 'TotalUserCpuTimeHistory': [172], 'TotalSysCpuTimeHistory': [9], 'WallDurations': [8.0, 153.31727933883667, 360.0], 'JobIds': ['114876887.0'], 'State': 'finished', 'RecordedSite': True}}
+INFO 2025-02-04 23:23:54.038 UTC: 	 Status on the scheduler:	SUBMITTED
+INFO 2025-02-04 23:23:54.038 UTC: 	 
+Jobs status:                    finished     		 88.9% (16/18)
+INFO 2025-02-04 23:23:54.038 UTC: 	 				transferring 		 11.1% ( 2/18)
+INFO 2025-02-04 23:23:54.038 UTC: 	 
+No publication information (publication has been disabled in the CRAB configuration file)
+INFO 2025-02-04 23:23:54.039 UTC: 	 
+Warning: the max jobs runtime is less than 30% of the task requested value (1250 min), please consider to request a lower value for failed jobs (allowed through crab resubmit) and/or improve the jobs splitting (e.g. config.Data.splitting = 'Automatic') in a new task.
+INFO 2025-02-04 23:23:54.039 UTC: 	 
+Warning: the average jobs CPU efficiency is less than 50%, please consider to improve the jobs splitting (e.g. config.Data.splitting = 'Automatic') in a new task
+INFO 2025-02-04 23:23:54.039 UTC: 	 
+Summary of run jobs:
+ * Memory: 64MB min, 653MB max, 332MB ave
+ * Runtime: 0:02:16 min, 0:06:36 max, 0:03:34 ave
+ * CPU eff: 0% min, 75% max, 20% ave
+ * Waste: 1:13:29 (53% of total)
+
+INFO 2025-02-04 23:23:54.040 UTC: 	 Log file is /afs/cern.ch/user/b/beozek/private/CMSSW_10_6_28/src/MyAnalyzer/LHEMttbarAnalyzer/crab_projects_SM_rwgth_test/crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test/crab.log
+DEBUG 2025-02-04 23:57:26.482 UTC: 	 CRAB Client version: v3.241125
+DEBUG 2025-02-04 23:57:26.482 UTC: 	 Running on: Linux lxplus973.cern.ch 5.14.0-503.15.1.el9_5.x86_64 #1 SMP PREEMPT_DYNAMIC Thu Nov 14 15:45:31 EST 2024 x86_64 x86_64 x86_64 GNU/Linux
+DEBUG 2025-02-04 23:57:26.482 UTC: 	 Using SINGULARITY image: el7:x86_64
+DEBUG 2025-02-04 23:57:26.482 UTC: 	 Operating System: CentOS Linux 7 (Core)
+DEBUG 2025-02-04 23:57:26.482 UTC: 	 Executing command: 'status'
+DEBUG 2025-02-04 23:57:26.482 UTC: 	 Found CRAB cache file /afs/cern.ch/user/b/beozek/.crab3
+DEBUG 2025-02-04 23:57:26.485 UTC: 	 Checking credentials
+DEBUG 2025-02-04 23:57:26.485 UTC: 	 Found proxy file /tmp/x509up_u139566
+DEBUG 2025-02-04 23:57:26.486 UTC: 	 Making sure it has proper VOMS extension
+DEBUG 2025-02-04 23:57:26.486 UTC: 	 Executing command :
+ voms-proxy-info --vo --file /tmp/x509up_u139566
+DEBUG 2025-02-04 23:57:26.508 UTC: 	 output : cms
+
+ error: 
+ retcode : 0
+DEBUG 2025-02-04 23:57:26.509 UTC: 	 Getting proxy life time left
+DEBUG 2025-02-04 23:57:26.509 UTC: 	 Executing command :
+ voms-proxy-info --actimeleft --timeleft --file /tmp/x509up_u139566
+DEBUG 2025-02-04 23:57:26.532 UTC: 	 output : 681312
+681311
+
+ error: 
+ retcode : 0
+DEBUG 2025-02-04 23:57:26.532 UTC: 	 Proxy valid for 189:15:11 hours
+DEBUG 2025-02-04 23:57:26.532 UTC: 	 Encoded data for curl request: subresource=delegatedn
+DEBUG 2025-02-04 23:57:26.574 UTC: 	 Registering user credentials on myproxy for /DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(01|02).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-dev-tw(01|02|03|04).cern.ch|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=cmscrab/CN=(817881|373708)/CN=Robot: cms crab|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=crabint1/CN=373708/CN=Robot: CMS CRAB Integration 1
+DEBUG 2025-02-04 23:57:26.574 UTC: 	 Executing command :
+ voms-proxy-info --identity --file /tmp/x509up_u139566
+DEBUG 2025-02-04 23:57:26.599 UTC: 	 output : /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=beozek/CN=851337/CN=Beren Ozek
+
+ error: 
+ retcode : 0
+DEBUG 2025-02-04 23:57:26.599 UTC: 	 Getting myproxy life time left for 12f89c1afcc72f4407d8a7aa483b1b995adc434f
+DEBUG 2025-02-04 23:57:26.599 UTC: 	 Executing command :
+ myproxy-info -s myproxy.cern.ch -l 12f89c1afcc72f4407d8a7aa483b1b995adc434f
+DEBUG 2025-02-04 23:57:26.863 UTC: 	 output : username: 12f89c1afcc72f4407d8a7aa483b1b995adc434f
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=beozek/CN=851337/CN=Beren Ozek
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(01|02).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-dev-tw(01|02|03|04).cern.ch|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=cmscrab/CN=(817881|373708)/CN=Robot: cms crab|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=crabint1/CN=373708/CN=Robot: CMS CRAB Integration 1
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(01|02).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-dev-tw(01|02|03|04).cern.ch|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=cmscrab/CN=(817881|373708)/CN=Robot: cms crab|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=crabint1/CN=373708/CN=Robot: CMS CRAB Integration 1
+  timeleft: 718:24:31  (29.9 days)
+
+ error: 
+ retcode : 0
+DEBUG 2025-02-04 23:57:26.864 UTC: 	 Myproxy is valid: 2586240
+DEBUG 2025-02-04 23:57:26.864 UTC: 	 Result of myproxy credential check:
+  Credential exists on myproxy: username: 12f89c1afcc72f4407d8a7aa483b1b995adc434f  - validity: 29 days, 22:24:00
+DEBUG 2025-02-04 23:57:26.864 UTC: 	 Retrieving username ...
+DEBUG 2025-02-04 23:57:26.864 UTC: 	 Retrieving username from CRIC...
+DEBUG 2025-02-04 23:57:27.944 UTC: 	 username is beozek
+INFO 2025-02-04 23:57:28.223 UTC: 	 Rucio client intialized for account beozek
+DEBUG 2025-02-04 23:57:28.223 UTC: 	 Command use: status
+DEBUG 2025-02-04 23:57:28.223 UTC: 	 Options use: ['-d', 'crab_projects_SM_rwgth_test/crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test']
+DEBUG 2025-02-04 23:57:28.223 UTC: 	 Encoded data for curl request: subresource=version
+DEBUG 2025-02-04 23:57:28.264 UTC: 	 CRABClient version: v3.241125
+DEBUG 2025-02-04 23:57:28.264 UTC: 	 Instance is prod
+DEBUG 2025-02-04 23:57:28.264 UTC: 	 Server base url is cmsweb.cern.ch
+DEBUG 2025-02-04 23:57:28.264 UTC: 	 Command api workflow
+DEBUG 2025-02-04 23:57:28.265 UTC: 	 Encoded data for curl request: subresource=search&workflow=250204_222203%3Abeozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test
+DEBUG 2025-02-04 23:57:28.309 UTC: 	 Got information from server oracle database: {'desc': {'columns': ['tm_taskname', 'tm_activity', 'tm_task_status', 'tm_task_command', 'tm_start_time', 'tm_start_injection', 'tm_end_injection', 'tm_task_failure', 'tm_job_sw', 'tm_job_arch', 'tm_input_dataset', 'tm_nonvalid_input_dataset', 'tm_use_parent', 'tm_site_whitelist', 'tm_site_blacklist', 'tm_split_algo', 'tm_split_args', 'tm_user_sandbox', 'tm_cache_url', 'tm_username', 'tm_user_dn', 'tm_user_vo', 'tm_user_role', 'tm_user_group', 'tm_publish_name', 'tm_publish_groupname', 'tm_asyncdest', 'tm_dbs_url', 'tm_publish_dbs_url', 'tm_publication', 'tm_outfiles', 'tm_tfile_outfiles', 'tm_edm_outfiles', 'tm_job_type', 'tm_generator', 'tm_events_per_lumi', 'tm_arguments', 'tm_save_logs', 'tw_name', 'tm_user_infiles', 'tm_maxjobruntime', 'tm_numcores', 'tm_maxmemory', 'tm_priority', 'tm_output_dataset', 'tm_task_warnings', 'tm_user_webdir', 'tm_scriptexe', 'tm_scriptargs', 'tm_extrajdl', 'tm_collector', 'tm_schedd', 'tm_dry_run', 'tm_user_files', 'tm_transfer_outputs', 'tm_output_lfn', 'tm_ignore_locality', 'tm_fail_limit', 'tm_one_event_mode', 'tm_secondary_input_dataset', 'tm_primary_dataset', 'tm_last_publication', 'tm_debug_files', 'clusterid', 'tm_ignore_global_blacklist', 'tm_submitter_ip_addr', 'tm_totalunits', 'tm_ddm_reqid', 'tm_user_config', 'tm_transfer_container', 'tm_transfer_rule', 'tm_publish_rule', 'tm_multipub_rule', 'tm_job_min_microarch']}, 'result': ['250204_222203:beozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test', 'None', 'SUBMITTED', 'SUBMIT', '2025-02-04 22:22:03.930031', 'None', '2025-02-04 22:23:35.600490', 'None', 'CMSSW_10_6_28', 'slc7_amd64_gcc700', '/TTtoLNu2Q-1Jets-smeft_MTT-0to700_TuneCP5_13TeV_madgraphMLM-pythia8/RunIISummer20UL17MiniAODv2-106X_mc2017_realistic_v9-v3/MINIAODSIM', 'F', '0', '[]', '[]', 'FileBased', "{'halt_job_on_file_boundaries': False, 'splitOnRun': False, 'files_per_job': 5, 'runs': [], 'lumis': []}", '0e4e30474b291967201934c565e547f198ee6c31068fcda3461807cea975dbba.tar.gz', 'https://cmsweb.cern.ch/S3/crabcache_prod', 'beozek', '/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=beozek/CN=851337/CN=Beren Ozek', 'cms', 'None', 'None', 'LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test-00000000000000000000000000000000', 'F', 'T2_DE_DESY', 'https://cmsweb.cern.ch/dbs/prod/global/DBSReader', 'https://cmsweb.cern.ch/dbs/prod/phys03/DBSWriter', 'F', '[]', "['lhe_SM_0_700.root']", '[]', 'Analysis', 'pythia', 'None', '{}', 'F', 'crab-prod-tw01', '[]', '1250', '1', '2000', '10', "['/FakeDataset/fakefile-FakePublish-6adde14290d6022e38c048f718104213/USER']", '[]', 'http://vocms0195.cern.ch/mon/beozek/250204_222203:beozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test', 'None', '[]', '[]', 'cmsgwms-collector-global.cern.ch:9620,cmsgwms-collector-global.fnal.gov:9620', 'crab3@vocms0195.cern.ch', 'F', '[]', 'T', '/store/user/beozek/LHEMttbarAnalyzer/MTT0to700_SM_rwgth_test/', 'F', 'None', 'F', 'None', 'TTtoLNu2Q-1Jets-smeft_MTT-0to700_TuneCP5_13TeV_madgraphMLM-pythia8', 'None', 'a19f6269a976e4d65548ef9ce1c498fb68aa985314dc31785114a540693bb0a7.tar.gz', '114876859', 'F', '188.185.101.116', '20.0', 'None', '{"partialdataset": false, "requireaccelerator": false, "acceleratorparams": null, "inputblocks": null}', 'None', 'None', 'None', 'None', 'None']}
+INFO 2025-02-04 23:57:28.310 UTC: 	 CRAB project directory:		/afs/cern.ch/user/b/beozek/private/CMSSW_10_6_28/src/MyAnalyzer/LHEMttbarAnalyzer/crab_projects_SM_rwgth_test/crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test
+INFO 2025-02-04 23:57:28.310 UTC: 	 Task name:			250204_222203:beozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test
+INFO 2025-02-04 23:57:28.310 UTC: 	 Grid scheduler - Task Worker:	crab3@vocms0195.cern.ch - crab-prod-tw01
+INFO 2025-02-04 23:57:28.310 UTC: 	 Status on the CRAB server:	SUBMITTED
+INFO 2025-02-04 23:57:28.310 UTC: 	 Task URL to use for HELP:	https://cmsweb.cern.ch/crabserver/ui/task/250204_222203%3Abeozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test
+INFO 2025-02-04 23:57:28.316 UTC: 	 Dashboard monitoring URL:	https://monit-grafana.cern.ch/d/cmsTMDetail/cms-task-monitoring-task-view?orgId=11&var-user=beozek&var-task=250204_222203%3Abeozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test&from=1738704123000&to=now
+DEBUG 2025-02-04 23:57:28.316 UTC: 	 The CRAB server submitted your task to the Grid scheduler (cluster ID: 114876859)
+DEBUG 2025-02-04 23:57:28.316 UTC: 	 Webdir is located at http://vocms0195.cern.ch/mon/beozek/250204_222203:beozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test
+DEBUG 2025-02-04 23:57:28.316 UTC: 	 Encoded data for curl request: subresource=webdirprx&workflow=250204_222203%3Abeozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test
+DEBUG 2025-02-04 23:57:28.357 UTC: 	 Proxied webdir is located at https://cmsweb.cern.ch:8443/scheddmon/0195/beozek/250204_222203:beozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test
+DEBUG 2025-02-04 23:57:28.358 UTC: 	 Retrieving 'status_cache' file from https://cmsweb.cern.ch:8443/scheddmon/0195/beozek/250204_222203:beozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test/status_cache.pkl
+DEBUG 2025-02-04 23:57:28.358 UTC: 	 Will execute:
+curl -sS --capath /etc/grid-security/certificates --cert /tmp/x509up_u139566 --key /tmp/x509up_u139566 -o /tmp/crab_status-cache-m4w82cvp.pkl -w %"{http_code}" "https://cmsweb.cern.ch:8443/scheddmon/0195/beozek/250204_222203:beozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test/status_cache.pkl"
+DEBUG 2025-02-04 23:57:28.358 UTC: 	 Executing command :
+ curl -sS --capath /etc/grid-security/certificates --cert /tmp/x509up_u139566 --key /tmp/x509up_u139566 -o /tmp/crab_status-cache-m4w82cvp.pkl -w %"{http_code}" "https://cmsweb.cern.ch:8443/scheddmon/0195/beozek/250204_222203:beozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test/status_cache.pkl"
+DEBUG 2025-02-04 23:57:28.437 UTC: 	 output : 200
+ error: 
+ retcode : 0
+DEBUG 2025-02-04 23:57:28.437 UTC: 	 exitcode: 0
+stdout: 200
+stderr: 
+error details: 
+DEBUG 2025-02-04 23:57:28.438 UTC: 	 Got information from status cache file: {'14': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T1_UK_RAL', 'T1_UK_RAL'], 'ResidentSetSize': [668784], 'SubmitTimes': [1738707880.0], 'StartTimes': [1738708002.0], 'EndTimes': [1738708148.0], 'TotalUserCpuTimeHistory': [70], 'TotalSysCpuTimeHistory': [2], 'WallDurations': [146.0, 239.31727933883667, 239.31727933883667], 'JobIds': ['114876870.0'], 'State': 'finished', 'RecordedSite': True}, '10': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_DE_DESY', 'T2_DE_DESY'], 'ResidentSetSize': [653940], 'SubmitTimes': [1738707880.0], 'StartTimes': [1738708089.0], 'EndTimes': [1738708150.0], 'TotalUserCpuTimeHistory': [6], 'TotalSysCpuTimeHistory': [1], 'WallDurations': [61.0, 152.31727933883667, 152.31727933883667], 'JobIds': ['114876871.0'], 'State': 'finished', 'RecordedSite': True}, '12': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_BR_SPRACE', 'T2_BR_SPRACE'], 'ResidentSetSize': [62848], 'SubmitTimes': [1738707880.0], 'StartTimes': [1738708096.0], 'EndTimes': [1738708301.0], 'TotalUserCpuTimeHistory': [15], 'TotalSysCpuTimeHistory': [0], 'WallDurations': [8.0, 145.31727933883667, 205.0], 'JobIds': ['114876872.0'], 'State': 'finished', 'RecordedSite': True}, '18': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T1_US_FNAL', 'T1_US_FNAL'], 'ResidentSetSize': [58452], 'SubmitTimes': [1738707880.0], 'StartTimes': [1738708014.0], 'EndTimes': [1738708410.0], 'TotalUserCpuTimeHistory': [52], 'TotalSysCpuTimeHistory': [2], 'WallDurations': [9.0, 227.31727933883667, 396.0], 'JobIds': ['114876873.0'], 'State': 'finished', 'RecordedSite': True}, '6': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_IT_Bari', 'T2_IT_Bari'], 'ResidentSetSize': [56276], 'SubmitTimes': [1738707881.0], 'StartTimes': [1738708088.0], 'EndTimes': [1738708165.0], 'TotalUserCpuTimeHistory': [5], 'TotalSysCpuTimeHistory': [2], 'WallDurations': [77.0, 153.31727933883667, 153.31727933883667], 'JobIds': ['114876874.0'], 'State': 'finished', 'RecordedSite': True}, '7': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_BE_UCL', 'T2_BE_UCL'], 'ResidentSetSize': [652008], 'SubmitTimes': [1738707881.0], 'StartTimes': [1738708088.0], 'EndTimes': [1738708213.0], 'TotalUserCpuTimeHistory': [2], 'TotalSysCpuTimeHistory': [0], 'WallDurations': [125.0, 153.31727933883667, 153.31727933883667], 'JobIds': ['114876875.0'], 'State': 'finished', 'RecordedSite': True}, '1': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_US_Vanderbilt', 'T2_US_Vanderbilt'], 'ResidentSetSize': [66452], 'SubmitTimes': [1738707881.0], 'StartTimes': [1738708104.0], 'EndTimes': [1738708210.0], 'TotalUserCpuTimeHistory': [8], 'TotalSysCpuTimeHistory': [1], 'WallDurations': [106.0, 137.31727933883667, 137.31727933883667], 'JobIds': ['114876876.0'], 'State': 'finished', 'RecordedSite': True}, '4': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_CH_CSCS', 'T2_CH_CSCS'], 'ResidentSetSize': [626392], 'SubmitTimes': [1738707881.0], 'StartTimes': [1738708087.0], 'EndTimes': [1738708168.0], 'TotalUserCpuTimeHistory': [3], 'TotalSysCpuTimeHistory': [1], 'WallDurations': [81.0, 154.31727933883667, 154.31727933883667], 'JobIds': ['114876877.0'], 'State': 'finished', 'RecordedSite': True}, '16': {'Retries': 1, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_IT_Pisa', 'T2_IT_Pisa', 'T2_CH_CERN', 'T2_CH_CERN'], 'ResidentSetSize': [44592, 513484], 'SubmitTimes': [1738707881.0, 1738708466.0], 'StartTimes': [1738708337.0, 1738708824.0], 'EndTimes': [1738708398.0, 1738709066.0], 'TotalUserCpuTimeHistory': [1, 177], 'TotalSysCpuTimeHistory': [0, 4], 'WallDurations': [61.0, 0, 8.0, 22.909566164016724, 242.0], 'JobIds': ['114876878.0', '114877063.0'], 'State': 'finished', 'RecordedSite': True}, '11': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_DE_DESY', 'T2_DE_DESY'], 'ResidentSetSize': [655328], 'SubmitTimes': [1738707887.0], 'StartTimes': [1738708088.0], 'EndTimes': [1738708150.0], 'TotalUserCpuTimeHistory': [8], 'TotalSysCpuTimeHistory': [1], 'WallDurations': [62.0, 153.31727933883667, 153.31727933883667], 'JobIds': ['114876879.0'], 'State': 'finished', 'RecordedSite': True}, '2': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_US_Florida', 'T2_US_Florida'], 'ResidentSetSize': [43668], 'SubmitTimes': [1738707887.0], 'StartTimes': [1738708105.0], 'EndTimes': [1738708168.0], 'TotalUserCpuTimeHistory': [7], 'TotalSysCpuTimeHistory': [0], 'WallDurations': [63.0, 136.31727933883667, 136.31727933883667], 'JobIds': ['114876880.0'], 'State': 'finished', 'RecordedSite': True}, '3': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_IT_Bari', 'T2_IT_Bari'], 'ResidentSetSize': [48856], 'SubmitTimes': [1738707887.0], 'StartTimes': [1738708167.0], 'EndTimes': [1738708359.0], 'TotalUserCpuTimeHistory': [7], 'TotalSysCpuTimeHistory': [2], 'WallDurations': [9.0, 74.31727933883667, 192.0], 'JobIds': ['114876881.0'], 'State': 'finished', 'RecordedSite': True}, '5': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_IT_Bari', 'T2_IT_Bari'], 'ResidentSetSize': [552884], 'SubmitTimes': [1738707887.0], 'StartTimes': [1738708089.0], 'EndTimes': [1738708179.0], 'TotalUserCpuTimeHistory': [10], 'TotalSysCpuTimeHistory': [3], 'WallDurations': [90.0, 152.31727933883667, 152.31727933883667], 'JobIds': ['114876882.0'], 'State': 'finished', 'RecordedSite': True}, '8': {'Retries': 2, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_FR_GRIF', 'T2_FR_GRIF', 'T2_FR_GRIF', 'T2_FR_GRIF', 'T2_US_Florida', 'T2_US_Florida'], 'ResidentSetSize': [110940, 146684, 140260], 'SubmitTimes': [1738707887.0, 1738708471.0, 1738708778.0], 'StartTimes': [1738708339.0, 1738708585.0, 1738708886.0], 'EndTimes': [1738708401.0, 1738708650.0, 1738708949.0], 'TotalUserCpuTimeHistory': [2, 1, 0], 'TotalSysCpuTimeHistory': [0, 0, 0], 'WallDurations': [62.0, 0, 65.0, 0, 63.0, 262.5795600414276, 262.5795600414276], 'JobIds': ['114876883.0', '114877065.0', '114877115.0'], 'State': 'finished', 'RecordedSite': True}, '9': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T1_ES_PIC', 'T1_ES_PIC'], 'ResidentSetSize': [59944], 'SubmitTimes': [1738707887.0], 'StartTimes': [1738708004.0], 'EndTimes': [1738708202.0], 'TotalUserCpuTimeHistory': [14], 'TotalSysCpuTimeHistory': [1], 'WallDurations': [198.0, 237.31727933883667, 237.31727933883667], 'JobIds': ['114876884.0'], 'State': 'finished', 'RecordedSite': True}, '13': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T1_UK_RAL', 'T1_UK_RAL'], 'ResidentSetSize': [650304], 'SubmitTimes': [1738707887.0], 'StartTimes': [1738708002.0], 'EndTimes': [1738708293.0], 'TotalUserCpuTimeHistory': [170], 'TotalSysCpuTimeHistory': [4], 'WallDurations': [9.0, 239.31727933883667, 291.0], 'JobIds': ['114876885.0'], 'State': 'finished', 'RecordedSite': True}, '15': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T1_DE_KIT', 'T1_DE_KIT'], 'ResidentSetSize': [54932], 'SubmitTimes': [1738707887.0], 'StartTimes': [1738708001.0], 'EndTimes': [1738708065.0], 'TotalUserCpuTimeHistory': [11], 'TotalSysCpuTimeHistory': [2], 'WallDurations': [64.0, 240.31727933883667, 240.31727933883667], 'JobIds': ['114876886.0'], 'State': 'finished', 'RecordedSite': True}, '17': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_IT_Pisa', 'T2_IT_Pisa'], 'ResidentSetSize': [547856], 'SubmitTimes': [1738707887.0], 'StartTimes': [1738708088.0], 'EndTimes': [1738708448.0], 'TotalUserCpuTimeHistory': [172], 'TotalSysCpuTimeHistory': [9], 'WallDurations': [8.0, 153.31727933883667, 360.0], 'JobIds': ['114876887.0'], 'State': 'finished', 'RecordedSite': True}}
+INFO 2025-02-04 23:57:28.438 UTC: 	 Status on the scheduler:	COMPLETED
+INFO 2025-02-04 23:57:28.438 UTC: 	 
+Jobs status:                    finished     		100.0% (18/18)
+INFO 2025-02-04 23:57:28.438 UTC: 	 
+No publication information (publication has been disabled in the CRAB configuration file)
+INFO 2025-02-04 23:57:28.438 UTC: 	 
+Warning: the max jobs runtime is less than 30% of the task requested value (1250 min), please consider to request a lower value for failed jobs (allowed through crab resubmit) and/or improve the jobs splitting (e.g. config.Data.splitting = 'Automatic') in a new task.
+INFO 2025-02-04 23:57:28.438 UTC: 	 
+Warning: the average jobs CPU efficiency is less than 50%, please consider to improve the jobs splitting (e.g. config.Data.splitting = 'Automatic') in a new task
+INFO 2025-02-04 23:57:28.439 UTC: 	 
+Summary of run jobs:
+ * Memory: 64MB min, 653MB max, 332MB ave
+ * Runtime: 0:02:16 min, 0:06:36 max, 0:03:34 ave
+ * CPU eff: 0% min, 75% max, 20% ave
+ * Waste: 1:13:29 (53% of total)
+
+INFO 2025-02-04 23:57:28.440 UTC: 	 Log file is /afs/cern.ch/user/b/beozek/private/CMSSW_10_6_28/src/MyAnalyzer/LHEMttbarAnalyzer/crab_projects_SM_rwgth_test/crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test/crab.log
+DEBUG 2025-02-05 00:28:08.384 UTC: 	 CRAB Client version: v3.241125
+DEBUG 2025-02-05 00:28:08.384 UTC: 	 Running on: Linux lxplus973.cern.ch 5.14.0-503.15.1.el9_5.x86_64 #1 SMP PREEMPT_DYNAMIC Thu Nov 14 15:45:31 EST 2024 x86_64 x86_64 x86_64 GNU/Linux
+DEBUG 2025-02-05 00:28:08.384 UTC: 	 Using SINGULARITY image: el7:x86_64
+DEBUG 2025-02-05 00:28:08.384 UTC: 	 Operating System: CentOS Linux 7 (Core)
+DEBUG 2025-02-05 00:28:08.384 UTC: 	 Executing command: 'status'
+DEBUG 2025-02-05 00:28:08.384 UTC: 	 Found CRAB cache file /afs/cern.ch/user/b/beozek/.crab3
+DEBUG 2025-02-05 00:28:08.405 UTC: 	 Checking credentials
+DEBUG 2025-02-05 00:28:08.405 UTC: 	 Found proxy file /tmp/x509up_u139566
+DEBUG 2025-02-05 00:28:08.405 UTC: 	 Making sure it has proper VOMS extension
+DEBUG 2025-02-05 00:28:08.405 UTC: 	 Executing command :
+ voms-proxy-info --vo --file /tmp/x509up_u139566
+DEBUG 2025-02-05 00:28:08.433 UTC: 	 output : cms
+
+ error: 
+ retcode : 0
+DEBUG 2025-02-05 00:28:08.433 UTC: 	 Getting proxy life time left
+DEBUG 2025-02-05 00:28:08.433 UTC: 	 Executing command :
+ voms-proxy-info --actimeleft --timeleft --file /tmp/x509up_u139566
+DEBUG 2025-02-05 00:28:08.454 UTC: 	 output : 679470
+679469
+
+ error: 
+ retcode : 0
+DEBUG 2025-02-05 00:28:08.454 UTC: 	 Proxy valid for 188:44:29 hours
+DEBUG 2025-02-05 00:28:08.455 UTC: 	 Encoded data for curl request: subresource=delegatedn
+DEBUG 2025-02-05 00:28:08.509 UTC: 	 Registering user credentials on myproxy for /DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(01|02).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-dev-tw(01|02|03|04).cern.ch|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=cmscrab/CN=(817881|373708)/CN=Robot: cms crab|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=crabint1/CN=373708/CN=Robot: CMS CRAB Integration 1
+DEBUG 2025-02-05 00:28:08.509 UTC: 	 Executing command :
+ voms-proxy-info --identity --file /tmp/x509up_u139566
+DEBUG 2025-02-05 00:28:08.535 UTC: 	 output : /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=beozek/CN=851337/CN=Beren Ozek
+
+ error: 
+ retcode : 0
+DEBUG 2025-02-05 00:28:08.535 UTC: 	 Getting myproxy life time left for 12f89c1afcc72f4407d8a7aa483b1b995adc434f
+DEBUG 2025-02-05 00:28:08.535 UTC: 	 Executing command :
+ myproxy-info -s myproxy.cern.ch -l 12f89c1afcc72f4407d8a7aa483b1b995adc434f
+DEBUG 2025-02-05 00:28:08.822 UTC: 	 output : username: 12f89c1afcc72f4407d8a7aa483b1b995adc434f
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=beozek/CN=851337/CN=Beren Ozek
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(01|02).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-dev-tw(01|02|03|04).cern.ch|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=cmscrab/CN=(817881|373708)/CN=Robot: cms crab|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=crabint1/CN=373708/CN=Robot: CMS CRAB Integration 1
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(01|02).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-dev-tw(01|02|03|04).cern.ch|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=cmscrab/CN=(817881|373708)/CN=Robot: cms crab|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=crabint1/CN=373708/CN=Robot: CMS CRAB Integration 1
+  timeleft: 717:53:49  (29.9 days)
+
+ error: 
+ retcode : 0
+DEBUG 2025-02-05 00:28:08.822 UTC: 	 Myproxy is valid: 2584380
+DEBUG 2025-02-05 00:28:08.822 UTC: 	 Result of myproxy credential check:
+  Credential exists on myproxy: username: 12f89c1afcc72f4407d8a7aa483b1b995adc434f  - validity: 29 days, 21:53:00
+DEBUG 2025-02-05 00:28:08.822 UTC: 	 Retrieving username ...
+DEBUG 2025-02-05 00:28:08.822 UTC: 	 Retrieving username from CRIC...
+DEBUG 2025-02-05 00:28:09.451 UTC: 	 username is beozek
+INFO 2025-02-05 00:28:09.785 UTC: 	 Rucio client intialized for account beozek
+DEBUG 2025-02-05 00:28:09.786 UTC: 	 Command use: status
+DEBUG 2025-02-05 00:28:09.786 UTC: 	 Options use: ['-d', 'crab_projects_SM_rwgth_test/crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test']
+DEBUG 2025-02-05 00:28:09.786 UTC: 	 Encoded data for curl request: subresource=version
+DEBUG 2025-02-05 00:28:09.827 UTC: 	 CRABClient version: v3.241125
+DEBUG 2025-02-05 00:28:09.828 UTC: 	 Instance is prod
+DEBUG 2025-02-05 00:28:09.828 UTC: 	 Server base url is cmsweb.cern.ch
+DEBUG 2025-02-05 00:28:09.828 UTC: 	 Command api workflow
+DEBUG 2025-02-05 00:28:09.828 UTC: 	 Encoded data for curl request: subresource=search&workflow=250204_222203%3Abeozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test
+DEBUG 2025-02-05 00:28:09.874 UTC: 	 Got information from server oracle database: {'desc': {'columns': ['tm_taskname', 'tm_activity', 'tm_task_status', 'tm_task_command', 'tm_start_time', 'tm_start_injection', 'tm_end_injection', 'tm_task_failure', 'tm_job_sw', 'tm_job_arch', 'tm_input_dataset', 'tm_nonvalid_input_dataset', 'tm_use_parent', 'tm_site_whitelist', 'tm_site_blacklist', 'tm_split_algo', 'tm_split_args', 'tm_user_sandbox', 'tm_cache_url', 'tm_username', 'tm_user_dn', 'tm_user_vo', 'tm_user_role', 'tm_user_group', 'tm_publish_name', 'tm_publish_groupname', 'tm_asyncdest', 'tm_dbs_url', 'tm_publish_dbs_url', 'tm_publication', 'tm_outfiles', 'tm_tfile_outfiles', 'tm_edm_outfiles', 'tm_job_type', 'tm_generator', 'tm_events_per_lumi', 'tm_arguments', 'tm_save_logs', 'tw_name', 'tm_user_infiles', 'tm_maxjobruntime', 'tm_numcores', 'tm_maxmemory', 'tm_priority', 'tm_output_dataset', 'tm_task_warnings', 'tm_user_webdir', 'tm_scriptexe', 'tm_scriptargs', 'tm_extrajdl', 'tm_collector', 'tm_schedd', 'tm_dry_run', 'tm_user_files', 'tm_transfer_outputs', 'tm_output_lfn', 'tm_ignore_locality', 'tm_fail_limit', 'tm_one_event_mode', 'tm_secondary_input_dataset', 'tm_primary_dataset', 'tm_last_publication', 'tm_debug_files', 'clusterid', 'tm_ignore_global_blacklist', 'tm_submitter_ip_addr', 'tm_totalunits', 'tm_ddm_reqid', 'tm_user_config', 'tm_transfer_container', 'tm_transfer_rule', 'tm_publish_rule', 'tm_multipub_rule', 'tm_job_min_microarch']}, 'result': ['250204_222203:beozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test', 'None', 'SUBMITTED', 'SUBMIT', '2025-02-04 22:22:03.930031', 'None', '2025-02-04 22:23:35.600490', 'None', 'CMSSW_10_6_28', 'slc7_amd64_gcc700', '/TTtoLNu2Q-1Jets-smeft_MTT-0to700_TuneCP5_13TeV_madgraphMLM-pythia8/RunIISummer20UL17MiniAODv2-106X_mc2017_realistic_v9-v3/MINIAODSIM', 'F', '0', '[]', '[]', 'FileBased', "{'halt_job_on_file_boundaries': False, 'splitOnRun': False, 'files_per_job': 5, 'runs': [], 'lumis': []}", '0e4e30474b291967201934c565e547f198ee6c31068fcda3461807cea975dbba.tar.gz', 'https://cmsweb.cern.ch/S3/crabcache_prod', 'beozek', '/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=beozek/CN=851337/CN=Beren Ozek', 'cms', 'None', 'None', 'LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test-00000000000000000000000000000000', 'F', 'T2_DE_DESY', 'https://cmsweb.cern.ch/dbs/prod/global/DBSReader', 'https://cmsweb.cern.ch/dbs/prod/phys03/DBSWriter', 'F', '[]', "['lhe_SM_0_700.root']", '[]', 'Analysis', 'pythia', 'None', '{}', 'F', 'crab-prod-tw01', '[]', '1250', '1', '2000', '10', "['/FakeDataset/fakefile-FakePublish-6adde14290d6022e38c048f718104213/USER']", '[]', 'http://vocms0195.cern.ch/mon/beozek/250204_222203:beozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test', 'None', '[]', '[]', 'cmsgwms-collector-global.cern.ch:9620,cmsgwms-collector-global.fnal.gov:9620', 'crab3@vocms0195.cern.ch', 'F', '[]', 'T', '/store/user/beozek/LHEMttbarAnalyzer/MTT0to700_SM_rwgth_test/', 'F', 'None', 'F', 'None', 'TTtoLNu2Q-1Jets-smeft_MTT-0to700_TuneCP5_13TeV_madgraphMLM-pythia8', 'None', 'a19f6269a976e4d65548ef9ce1c498fb68aa985314dc31785114a540693bb0a7.tar.gz', '114876859', 'F', '188.185.101.116', '20.0', 'None', '{"partialdataset": false, "requireaccelerator": false, "acceleratorparams": null, "inputblocks": null}', 'None', 'None', 'None', 'None', 'None']}
+INFO 2025-02-05 00:28:09.874 UTC: 	 CRAB project directory:		/afs/cern.ch/user/b/beozek/private/CMSSW_10_6_28/src/MyAnalyzer/LHEMttbarAnalyzer/crab_projects_SM_rwgth_test/crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test
+INFO 2025-02-05 00:28:09.875 UTC: 	 Task name:			250204_222203:beozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test
+INFO 2025-02-05 00:28:09.875 UTC: 	 Grid scheduler - Task Worker:	crab3@vocms0195.cern.ch - crab-prod-tw01
+INFO 2025-02-05 00:28:09.875 UTC: 	 Status on the CRAB server:	SUBMITTED
+INFO 2025-02-05 00:28:09.875 UTC: 	 Task URL to use for HELP:	https://cmsweb.cern.ch/crabserver/ui/task/250204_222203%3Abeozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test
+INFO 2025-02-05 00:28:09.880 UTC: 	 Dashboard monitoring URL:	https://monit-grafana.cern.ch/d/cmsTMDetail/cms-task-monitoring-task-view?orgId=11&var-user=beozek&var-task=250204_222203%3Abeozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test&from=1738704123000&to=now
+DEBUG 2025-02-05 00:28:09.880 UTC: 	 The CRAB server submitted your task to the Grid scheduler (cluster ID: 114876859)
+DEBUG 2025-02-05 00:28:09.880 UTC: 	 Webdir is located at http://vocms0195.cern.ch/mon/beozek/250204_222203:beozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test
+DEBUG 2025-02-05 00:28:09.880 UTC: 	 Encoded data for curl request: subresource=webdirprx&workflow=250204_222203%3Abeozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test
+DEBUG 2025-02-05 00:28:09.924 UTC: 	 Proxied webdir is located at https://cmsweb.cern.ch:8443/scheddmon/0195/beozek/250204_222203:beozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test
+DEBUG 2025-02-05 00:28:09.924 UTC: 	 Retrieving 'status_cache' file from https://cmsweb.cern.ch:8443/scheddmon/0195/beozek/250204_222203:beozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test/status_cache.pkl
+DEBUG 2025-02-05 00:28:09.924 UTC: 	 Will execute:
+curl -sS --capath /etc/grid-security/certificates --cert /tmp/x509up_u139566 --key /tmp/x509up_u139566 -o /tmp/crab_status-cache-dpci9ifh.pkl -w %"{http_code}" "https://cmsweb.cern.ch:8443/scheddmon/0195/beozek/250204_222203:beozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test/status_cache.pkl"
+DEBUG 2025-02-05 00:28:09.924 UTC: 	 Executing command :
+ curl -sS --capath /etc/grid-security/certificates --cert /tmp/x509up_u139566 --key /tmp/x509up_u139566 -o /tmp/crab_status-cache-dpci9ifh.pkl -w %"{http_code}" "https://cmsweb.cern.ch:8443/scheddmon/0195/beozek/250204_222203:beozek_crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test/status_cache.pkl"
+DEBUG 2025-02-05 00:28:09.961 UTC: 	 output : 200
+ error: 
+ retcode : 0
+DEBUG 2025-02-05 00:28:09.961 UTC: 	 exitcode: 0
+stdout: 200
+stderr: 
+error details: 
+DEBUG 2025-02-05 00:28:09.961 UTC: 	 Got information from status cache file: {'14': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T1_UK_RAL', 'T1_UK_RAL'], 'ResidentSetSize': [668784], 'SubmitTimes': [1738707880.0], 'StartTimes': [1738708002.0], 'EndTimes': [1738708148.0], 'TotalUserCpuTimeHistory': [70], 'TotalSysCpuTimeHistory': [2], 'WallDurations': [146.0, 239.31727933883667, 239.31727933883667], 'JobIds': ['114876870.0'], 'State': 'finished', 'RecordedSite': True}, '10': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_DE_DESY', 'T2_DE_DESY'], 'ResidentSetSize': [653940], 'SubmitTimes': [1738707880.0], 'StartTimes': [1738708089.0], 'EndTimes': [1738708150.0], 'TotalUserCpuTimeHistory': [6], 'TotalSysCpuTimeHistory': [1], 'WallDurations': [61.0, 152.31727933883667, 152.31727933883667], 'JobIds': ['114876871.0'], 'State': 'finished', 'RecordedSite': True}, '12': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_BR_SPRACE', 'T2_BR_SPRACE'], 'ResidentSetSize': [62848], 'SubmitTimes': [1738707880.0], 'StartTimes': [1738708096.0], 'EndTimes': [1738708301.0], 'TotalUserCpuTimeHistory': [15], 'TotalSysCpuTimeHistory': [0], 'WallDurations': [8.0, 145.31727933883667, 205.0], 'JobIds': ['114876872.0'], 'State': 'finished', 'RecordedSite': True}, '18': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T1_US_FNAL', 'T1_US_FNAL'], 'ResidentSetSize': [58452], 'SubmitTimes': [1738707880.0], 'StartTimes': [1738708014.0], 'EndTimes': [1738708410.0], 'TotalUserCpuTimeHistory': [52], 'TotalSysCpuTimeHistory': [2], 'WallDurations': [9.0, 227.31727933883667, 396.0], 'JobIds': ['114876873.0'], 'State': 'finished', 'RecordedSite': True}, '6': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_IT_Bari', 'T2_IT_Bari'], 'ResidentSetSize': [56276], 'SubmitTimes': [1738707881.0], 'StartTimes': [1738708088.0], 'EndTimes': [1738708165.0], 'TotalUserCpuTimeHistory': [5], 'TotalSysCpuTimeHistory': [2], 'WallDurations': [77.0, 153.31727933883667, 153.31727933883667], 'JobIds': ['114876874.0'], 'State': 'finished', 'RecordedSite': True}, '7': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_BE_UCL', 'T2_BE_UCL'], 'ResidentSetSize': [652008], 'SubmitTimes': [1738707881.0], 'StartTimes': [1738708088.0], 'EndTimes': [1738708213.0], 'TotalUserCpuTimeHistory': [2], 'TotalSysCpuTimeHistory': [0], 'WallDurations': [125.0, 153.31727933883667, 153.31727933883667], 'JobIds': ['114876875.0'], 'State': 'finished', 'RecordedSite': True}, '1': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_US_Vanderbilt', 'T2_US_Vanderbilt'], 'ResidentSetSize': [66452], 'SubmitTimes': [1738707881.0], 'StartTimes': [1738708104.0], 'EndTimes': [1738708210.0], 'TotalUserCpuTimeHistory': [8], 'TotalSysCpuTimeHistory': [1], 'WallDurations': [106.0, 137.31727933883667, 137.31727933883667], 'JobIds': ['114876876.0'], 'State': 'finished', 'RecordedSite': True}, '4': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_CH_CSCS', 'T2_CH_CSCS'], 'ResidentSetSize': [626392], 'SubmitTimes': [1738707881.0], 'StartTimes': [1738708087.0], 'EndTimes': [1738708168.0], 'TotalUserCpuTimeHistory': [3], 'TotalSysCpuTimeHistory': [1], 'WallDurations': [81.0, 154.31727933883667, 154.31727933883667], 'JobIds': ['114876877.0'], 'State': 'finished', 'RecordedSite': True}, '16': {'Retries': 1, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_IT_Pisa', 'T2_IT_Pisa', 'T2_CH_CERN', 'T2_CH_CERN'], 'ResidentSetSize': [44592, 513484], 'SubmitTimes': [1738707881.0, 1738708466.0], 'StartTimes': [1738708337.0, 1738708824.0], 'EndTimes': [1738708398.0, 1738709066.0], 'TotalUserCpuTimeHistory': [1, 177], 'TotalSysCpuTimeHistory': [0, 4], 'WallDurations': [61.0, 0, 8.0, 22.909566164016724, 242.0], 'JobIds': ['114876878.0', '114877063.0'], 'State': 'finished', 'RecordedSite': True}, '11': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_DE_DESY', 'T2_DE_DESY'], 'ResidentSetSize': [655328], 'SubmitTimes': [1738707887.0], 'StartTimes': [1738708088.0], 'EndTimes': [1738708150.0], 'TotalUserCpuTimeHistory': [8], 'TotalSysCpuTimeHistory': [1], 'WallDurations': [62.0, 153.31727933883667, 153.31727933883667], 'JobIds': ['114876879.0'], 'State': 'finished', 'RecordedSite': True}, '2': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_US_Florida', 'T2_US_Florida'], 'ResidentSetSize': [43668], 'SubmitTimes': [1738707887.0], 'StartTimes': [1738708105.0], 'EndTimes': [1738708168.0], 'TotalUserCpuTimeHistory': [7], 'TotalSysCpuTimeHistory': [0], 'WallDurations': [63.0, 136.31727933883667, 136.31727933883667], 'JobIds': ['114876880.0'], 'State': 'finished', 'RecordedSite': True}, '3': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_IT_Bari', 'T2_IT_Bari'], 'ResidentSetSize': [48856], 'SubmitTimes': [1738707887.0], 'StartTimes': [1738708167.0], 'EndTimes': [1738708359.0], 'TotalUserCpuTimeHistory': [7], 'TotalSysCpuTimeHistory': [2], 'WallDurations': [9.0, 74.31727933883667, 192.0], 'JobIds': ['114876881.0'], 'State': 'finished', 'RecordedSite': True}, '5': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_IT_Bari', 'T2_IT_Bari'], 'ResidentSetSize': [552884], 'SubmitTimes': [1738707887.0], 'StartTimes': [1738708089.0], 'EndTimes': [1738708179.0], 'TotalUserCpuTimeHistory': [10], 'TotalSysCpuTimeHistory': [3], 'WallDurations': [90.0, 152.31727933883667, 152.31727933883667], 'JobIds': ['114876882.0'], 'State': 'finished', 'RecordedSite': True}, '8': {'Retries': 2, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_FR_GRIF', 'T2_FR_GRIF', 'T2_FR_GRIF', 'T2_FR_GRIF', 'T2_US_Florida', 'T2_US_Florida'], 'ResidentSetSize': [110940, 146684, 140260], 'SubmitTimes': [1738707887.0, 1738708471.0, 1738708778.0], 'StartTimes': [1738708339.0, 1738708585.0, 1738708886.0], 'EndTimes': [1738708401.0, 1738708650.0, 1738708949.0], 'TotalUserCpuTimeHistory': [2, 1, 0], 'TotalSysCpuTimeHistory': [0, 0, 0], 'WallDurations': [62.0, 0, 65.0, 0, 63.0, 262.5795600414276, 262.5795600414276], 'JobIds': ['114876883.0', '114877065.0', '114877115.0'], 'State': 'finished', 'RecordedSite': True}, '9': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T1_ES_PIC', 'T1_ES_PIC'], 'ResidentSetSize': [59944], 'SubmitTimes': [1738707887.0], 'StartTimes': [1738708004.0], 'EndTimes': [1738708202.0], 'TotalUserCpuTimeHistory': [14], 'TotalSysCpuTimeHistory': [1], 'WallDurations': [198.0, 237.31727933883667, 237.31727933883667], 'JobIds': ['114876884.0'], 'State': 'finished', 'RecordedSite': True}, '13': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T1_UK_RAL', 'T1_UK_RAL'], 'ResidentSetSize': [650304], 'SubmitTimes': [1738707887.0], 'StartTimes': [1738708002.0], 'EndTimes': [1738708293.0], 'TotalUserCpuTimeHistory': [170], 'TotalSysCpuTimeHistory': [4], 'WallDurations': [9.0, 239.31727933883667, 291.0], 'JobIds': ['114876885.0'], 'State': 'finished', 'RecordedSite': True}, '15': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T1_DE_KIT', 'T1_DE_KIT'], 'ResidentSetSize': [54932], 'SubmitTimes': [1738707887.0], 'StartTimes': [1738708001.0], 'EndTimes': [1738708065.0], 'TotalUserCpuTimeHistory': [11], 'TotalSysCpuTimeHistory': [2], 'WallDurations': [64.0, 240.31727933883667, 240.31727933883667], 'JobIds': ['114876886.0'], 'State': 'finished', 'RecordedSite': True}, '17': {'Retries': 0, 'Restarts': 0, 'SiteHistory': ['Unknown', 'T2_IT_Pisa', 'T2_IT_Pisa'], 'ResidentSetSize': [547856], 'SubmitTimes': [1738707887.0], 'StartTimes': [1738708088.0], 'EndTimes': [1738708448.0], 'TotalUserCpuTimeHistory': [172], 'TotalSysCpuTimeHistory': [9], 'WallDurations': [8.0, 153.31727933883667, 360.0], 'JobIds': ['114876887.0'], 'State': 'finished', 'RecordedSite': True}}
+INFO 2025-02-05 00:28:09.961 UTC: 	 Status on the scheduler:	COMPLETED
+INFO 2025-02-05 00:28:09.962 UTC: 	 
+Jobs status:                    finished     		100.0% (18/18)
+INFO 2025-02-05 00:28:09.962 UTC: 	 
+No publication information (publication has been disabled in the CRAB configuration file)
+INFO 2025-02-05 00:28:09.962 UTC: 	 
+Warning: the max jobs runtime is less than 30% of the task requested value (1250 min), please consider to request a lower value for failed jobs (allowed through crab resubmit) and/or improve the jobs splitting (e.g. config.Data.splitting = 'Automatic') in a new task.
+INFO 2025-02-05 00:28:09.962 UTC: 	 
+Warning: the average jobs CPU efficiency is less than 50%, please consider to improve the jobs splitting (e.g. config.Data.splitting = 'Automatic') in a new task
+INFO 2025-02-05 00:28:09.962 UTC: 	 
+Summary of run jobs:
+ * Memory: 64MB min, 653MB max, 332MB ave
+ * Runtime: 0:02:16 min, 0:06:36 max, 0:03:34 ave
+ * CPU eff: 0% min, 75% max, 20% ave
+ * Waste: 1:13:29 (53% of total)
+
+INFO 2025-02-05 00:28:09.964 UTC: 	 Log file is /afs/cern.ch/user/b/beozek/private/CMSSW_10_6_28/src/MyAnalyzer/LHEMttbarAnalyzer/crab_projects_SM_rwgth_test/crab_LHEMttbarAnalyzer_MTT0to700_RunIISummer20UL17_SM_rwgth_test/crab.log

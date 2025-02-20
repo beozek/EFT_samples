@@ -2,8 +2,8 @@
 from CRABClient.UserUtilities import config
 config = config()
 
-config.General.requestName = 'LHEMttbarAnalyzer_MTT900toInf_RunIISummer20UL17_investigatingTopPt'
-config.General.workArea = 'crab_projects_investigatingTopPt'
+config.General.requestName = 'LHEMttbarAnalyzer_MTT900toInf_RunIISummer20UL17_sumweights'
+config.General.workArea = 'crab_projects_sumweights'
 config.General.transferOutputs = True
 config.General.transferLogs = False
 
@@ -15,8 +15,10 @@ config.Data.inputDataset = '/TTtoLNu2Q-1Jets-smeft_MTT-900toInf_TuneCP5_13TeV_ma
 config.Data.inputDBS = 'global'
 config.Data.splitting = 'FileBased'
 config.Data.unitsPerJob = 5
-config.Data.outLFNDirBase = '/store/user/beozek/LHEMttbarAnalyzer/MTT900toInf_investigatingTopPt/'
+# config.Data.totalUnits = 50
+
+config.Data.outLFNDirBase = '/store/user/beozek/LHEMttbarAnalyzer/MTT900toInf_sumweights/'
 config.Data.publication = False
-config.Data.outputDatasetTag = 'LHEMttbarAnalyzer_MTT900toInf_RunIISummer20UL17_investigatingTopPt'
+config.Data.outputDatasetTag = 'LHEMttbarAnalyzer_MTT900toInf_RunIISummer20UL17_sumweights'
 
 config.Site.storageSite = 'T2_DE_DESY'

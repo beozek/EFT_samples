@@ -3,8 +3,12 @@ import FWCore.ParameterSet.Config as cms
 process = cms.Process("ANALYSIS")
 
 process.load("FWCore.MessageLogger.MessageLogger_cfi")
+process.load("FWCore.MessageService.MessageLogger_cfi")
 process.load("Configuration.StandardSequences.Services_cff")
 process.load("SimGeneral.HepPDTESSource.pythiapdt_cfi")
+
+process.MessageLogger.cerr.FwkReport.reportEvery = 2000
+
 
 process.maxEvents = cms.untracked.PSet(input=cms.untracked.int32(-1))
 
@@ -19,7 +23,7 @@ process.source = cms.Source("PoolSource",
 )
 
 process.TFileService = cms.Service("TFileService",
-    fileName=cms.string("lhe_gen_sep_900Inf.root")
+    fileName=cms.string("lhe_SM_900Inf.root")
 )
 
 process.LHEMttbarAnalyzer = cms.EDAnalyzer("LHEMttbarAnalyzer",

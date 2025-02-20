@@ -106,11 +106,11 @@ def overlay_histograms_normalized():
     hist3_rebinned.SetStats(0)
     hist_combined.SetStats(0)
 
-    integral_combined = hist_combined.Integral()
-    if integral_combined != 0:
-        hist_combined.Scale(1.0 / integral_combined)
-    else:
-        print("Combined histogram has zero integral, cannot normalize.")
+    # integral_combined = hist_combined.Integral()
+    # if integral_combined != 0:
+    #     hist_combined.Scale(1.0 / integral_combined)
+    # else:
+    #     print("Combined histogram has zero integral, cannot normalize.")
 
 
     hist1_rebinned.SetLineColor(ROOT.kRed)
@@ -129,10 +129,10 @@ def overlay_histograms_normalized():
     hist1_rebinned.GetXaxis().SetTitle("Mtt [GeV]")
     hist1_rebinned.GetYaxis().SetTitle("Events")
 
-    # hist1_rebinned.Draw("HIST")
-    # hist2_rebinned.Draw("HIST SAME")
-    # hist3_rebinned.Draw("HIST SAME")
-    hist_combined.Draw("HIST SAME")
+    hist1_rebinned.Draw("HIST")
+    hist2_rebinned.Draw("HIST SAME")
+    hist3_rebinned.Draw("HIST SAME")
+    # hist_combined.Draw("HIST SAME")
 
     legend = ROOT.TLegend(0.65, 0.75, 0.88, 0.88)
     legend.SetBorderSize(0)
@@ -143,9 +143,12 @@ def overlay_histograms_normalized():
     # legend.AddEntry(hist_combined, "Total Combined", "l")
     legend.Draw()
 
-    max_y = max(hist1_rebinned.GetMaximum(), hist2_rebinned.GetMaximum(), hist3_rebinned.GetMaximum())
-    hist1_rebinned.SetMaximum(max_y * 1.2)
+    # max_y = max(hist1_rebinned.GetMaximum(), hist2_rebinned.GetMaximum(), hist3_rebinned.GetMaximum())
+    # hist1_rebinned.SetMaximum(max_y * 1.2)
+    c1.SaveAs("mttbar_indv_normalized.png")
+    c1.Clear()
 
+    hist_combined.Draw("HIST")
     c1.SaveAs("mttbar_comb_normalized.png")
 
     file1.Close()
